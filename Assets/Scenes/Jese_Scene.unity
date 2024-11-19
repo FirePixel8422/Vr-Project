@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gasfornuis
       objectReference: {fileID: 0}
+    - target: {fileID: 8558103792737750788, guid: aa7f71a78b1aec24594b91f8679ea217, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9047642187751151038, guid: aa7f71a78b1aec24594b91f8679ea217, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
