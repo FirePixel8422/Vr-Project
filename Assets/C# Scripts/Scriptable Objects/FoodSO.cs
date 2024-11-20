@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "New Food", menuName = "Cooking System/Food", order = 0)]
-public class FoodSO : MonoBehaviour
+public class FoodSO : ScriptableObject
 {
     public FoodType foodType;
 }
