@@ -15,4 +15,6 @@ public class RecipeSO : ScriptableObject
 public struct Recipe
 {
     public FoodSO[] requiredFood;
+
+    public ApplienceSO requiredApplience;
 }
