@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6523189956640990012
+--- !u!1001 &6485052786217077785
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -55,18 +55,10 @@ PrefabInstance:
     - target: {fileID: -3881046381831827383, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 14614ee7ca9ff0b4f87463d6a123eca1, type: 2}
-    - target: {fileID: -1970261715653630700, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 0a6cf67da08c3bd46a789d51fdf6b52a, type: 2}
     - target: {fileID: 919132149155446097, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_Name
       value: Milk
-      objectReference: {fileID: 0}
-    - target: {fileID: 2677352972872265170, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
