@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88b1cd1cf6eddf843869bbd5ecf14ea2, type: 3}
-  m_Name: New Recipe
+  m_Name: Lemonaid
   m_EditorClassIdentifier: 
   recipe:
     requiredFood:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: 01dc9677b83162b42a19e2e62325e03e, type: 2}
+    - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}

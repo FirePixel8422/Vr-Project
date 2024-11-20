@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88b1cd1cf6eddf843869bbd5ecf14ea2, type: 3}
-  m_Name: New Recipe
+  m_Name: Margarita_pizza
   m_EditorClassIdentifier: 
   recipe:
     requiredFood:
-    - {fileID: 0}
+    - {fileID: 11400000, guid: c618d9d95e54f814c96239fe5c159e0f, type: 2}
+    - {fileID: 11400000, guid: 5897f37ede8b5f9489056ae281fd446e, type: 2}
+    - {fileID: 11400000, guid: c86e190cf19bc0e43bb0c074bdc961ff, type: 2}

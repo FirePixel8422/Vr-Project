@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1c6a56fc78f5c14dabd78eb9d065d7a, type: 3}
-  m_Name: Tea leaf
+  m_Name: Meatball
   m_EditorClassIdentifier: 
   foodType:
-    foodName: Tea leaf
+    foodName: Meat ball
