@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88b1cd1cf6eddf843869bbd5ecf14ea2, type: 3}
-  m_Name: Smoothie
+  m_Name: Burger
   m_EditorClassIdentifier: 
   recipe:
     requiredFood:
-    - {fileID: 11400000, guid: 8f0456a2b6b932a4f8a49ab4e6581460, type: 2}
-    - {fileID: 11400000, guid: 8ab74490b4d62b2489b187068532c710, type: 2}
-    - {fileID: 11400000, guid: 7f36919d03c47ce4bb289e98a25531e4, type: 2}
-    - {fileID: 11400000, guid: 28cd8b4e6c1e98049bb862ef80ccebbf, type: 2}
+    - {fileID: 11400000, guid: c618d9d95e54f814c96239fe5c159e0f, type: 2}
+    - {fileID: 11400000, guid: 5897f37ede8b5f9489056ae281fd446e, type: 2}
+    - {fileID: 11400000, guid: 50c2fa5f313581c47bbd53eacaa4158b, type: 2}
+    - {fileID: 11400000, guid: c86e190cf19bc0e43bb0c074bdc961ff, type: 2}
+    - {fileID: 11400000, guid: fb1f127fd4e9bd4428aef8159f344f9d, type: 2}
