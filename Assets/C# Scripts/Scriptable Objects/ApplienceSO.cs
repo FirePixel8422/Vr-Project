@@ -14,7 +14,7 @@ public class ApplienceSO : ScriptableObject
 
     private void OnValidate()
     {
-        applience.applienceName = applienceName;
+        applience.fixedApplienceName = applienceName;
     }
 
     [HideInInspector]
@@ -26,12 +26,12 @@ public class ApplienceSO : ScriptableObject
 [System.Serializable]
 public struct Applience : IEquatable<Applience>
 {
-    public FixedString128Bytes applienceName;
+    public FixedString128Bytes fixedApplienceName;
 
 
     public bool Equals(Applience other)
     {
-        return applienceName == other.applienceName;
+        return fixedApplienceName == other.fixedApplienceName;
     }
 
 
@@ -47,7 +47,7 @@ public struct Applience : IEquatable<Applience>
 
     public override int GetHashCode()
     {
-        return applienceName.ToString()?.GetHashCode() ?? 0;
+        return fixedApplienceName.ToString()?.GetHashCode() ?? 0;
     }
 
 

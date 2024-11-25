@@ -6,7 +6,7 @@ using Unity.Collections;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "New Food", menuName = "Cooking System/Food", order = 0)]
+[CreateAssetMenu(fileName = "New Food", menuName = "Cooking System/Food", order = 1)]
 public class FoodSO : ScriptableObject
 {
     public string foodName;
@@ -15,7 +15,10 @@ public class FoodSO : ScriptableObject
 
     private void OnValidate()
     {
-        foodType.foodNameFixed = foodName;
+        if (string.IsNullOrEmpty(foodName) == false)
+        {
+            foodType.foodNameFixed = foodName;
+        }
     }
 
     [HideInInspector]
