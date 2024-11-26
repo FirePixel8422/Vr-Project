@@ -21,18 +21,15 @@ public struct Recipe : IEquatable<Recipe>
 
         for (int i = 0; i < _requiredFood.Length; i++)
         {
-            requiredFood[i] = new FoodSO
-            {
-                foodType = _requiredFood[i],
-            };
+            requiredFood[i] = ScriptableObject.CreateInstance<FoodSO>();
+            requiredFood[i].foodType = _requiredFood[i];
         }
 
 
-        requiredApplience = new ApplienceSO
-        {
-            applience = _requiredApplience,
-            applienceName = _requiredApplience.ToString(),
-        };
+        requiredApplience = ScriptableObject.CreateInstance<ApplienceSO>();
+
+        requiredApplience.applience = _requiredApplience;
+        requiredApplience.applienceName = _requiredApplience.ToString();
 
         foodIndex = -1;
     }
@@ -58,13 +55,13 @@ public struct Recipe : IEquatable<Recipe>
             {
                 if (requiredFood[i].foodType == other.requiredFood[i2].foodType)
                 {
-                    Debug.Log(requiredFood[i].name.ToString() + " Found");
+                    //Debug.Log(requiredFood[i].name.ToString() + " Found");
                     break;
                 }
                 //if the last food checked isnt the required food, return false
                 else if(i2 == other.requiredFood.Length - 1)
                 {
-                    Debug.Log(requiredFood[i].name.ToString() + " Exited");
+                    //Debug.Log(requiredFood[i].name.ToString() + " Exited");
                     return false;
                 }
             }

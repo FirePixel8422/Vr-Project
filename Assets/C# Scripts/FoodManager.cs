@@ -26,8 +26,6 @@ public class FoodManager : MonoBehaviour
     {
         madeFood = null;
 
-        print(foods.Length);
-
         Recipe attemptedRecipe = new Recipe(foods.AsArray().ToArray(), targetApplience);
 
 
