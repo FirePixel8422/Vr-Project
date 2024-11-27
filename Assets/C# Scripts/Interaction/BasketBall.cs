@@ -6,9 +6,7 @@ public class BasketBall : MonoBehaviour
 {
     public ParticleSystem confetti;
 
-    public float amplitude;
-    public float frequency;
-    public float duration;
+    public VibrationParamaters vibrationParams;
 
 
 
@@ -22,11 +20,8 @@ public class BasketBall : MonoBehaviour
     {
         if (coll.transform.gameObject.CompareTag("Basket"))
         {
-            InteractionController[] hapticImpulsePlayer = FindObjectsOfType<InteractionController>(true);
-            for (int i = 0; i < hapticImpulsePlayer.Length; i++)
-            {
-                hapticImpulsePlayer[i].SendVibration(amplitude, duration, frequency);
-            }
+            Hand.Left.SendVibration(vibrationParams);
+            Hand.Right.SendVibration(vibrationParams);
 
             confetti.transform.position = transform.position;
             confetti.Play();

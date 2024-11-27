@@ -1,123 +1,244 @@
-using System.Collections;
+using System;
 using Unity.Burst;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 
+[BurstCompile]
 public class InteractionController : MonoBehaviour
 {
-    public LayerMask interactablesLayer;
-    public float interactRange;
-    public bool canSwapItemFromHands;
+    private Hand hand;
+    private InteractionManager IM;
 
-    public float throwVlocityMultiplier;
 
-    public Transform handTransform;
+    [SerializeField]
+    private Transform rayTransform;
+
+    [SerializeField]
+    private Transform overlapSphereTransform;
+
     public Transform heldItemHolder;
 
+
     private Interactable heldObject;
+    public bool isHoldingObject;
 
-    
-    public HapticImpulsePlayer hapticImpulsePlayer;
-
-    public float amplitude;
-    public float frequency;
-    public float duration;
+    private Interactable toPickupObject;
+    public bool objectSelected;
 
 
+    private Collider[] hitObjectsInSphere;
+    private RaycastHit rayHit;
 
+
+    private Vector3 prevTransformPos;
+    private Vector3[] savedLocalVelocity;
+
+    public int frameAmount;
+    private int frameIndex;
+
+
+    [BurstCompile]
     public void OnClick(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && heldObject == null)
+        if (ctx.performed && isHoldingObject == false && objectSelected)
         {
-            TryPickup();
+            Pickup();
         }
 
-        if (ctx.canceled && heldObject != null)
+        if (ctx.canceled && isHoldingObject)
         {
             Drop();
         }
     }
 
 
-    public void TryPickup()
+    [BurstCompile]
+    private void Start()
     {
-        if (Physics.Raycast(handTransform.position, handTransform.forward, out RaycastHit hit, interactRange, interactablesLayer, QueryTriggerInteraction.Collide))
+        hand = GetComponent<Hand>();
+
+        IM = InteractionManager.Instance;
+        hitObjectsInSphere = new Collider[IM.maxExpectedObjectInSphere];
+
+        savedLocalVelocity = new Vector3[frameAmount];
+    }
+
+
+    [BurstCompile]
+    private void Update()
+    {
+        //if you are holding nothing, scan for objects by using a raycast and a sphere around you hand
+        if (isHoldingObject == false)
         {
-            if (hit.transform.TryGetComponent(out Interactable hitItem))
+            UpdateToPickObject();
+        }
+
+        //if you are holding something and it is throwable (Or "pickupsUseOldHandVel" is true), start doing velocity calculations
+        if (IM.pickupsUseOldHandVel || (heldObject != null && heldObject))
+        {
+            savedLocalVelocity[frameIndex] = (rayTransform.position - prevTransformPos) / Time.deltaTime;
+
+            frameIndex += 1;
+            if (frameIndex == frameAmount)
             {
-                if (hitItem.heldByPlayer)
-                {
-                    if (canSwapItemFromHands == false)
-                    {
-                        return;
-                    }
-
-                    hitItem.connectedHand.heldObject = null;
-                }
-
-                hitItem.Pickup(this);
-
-                SendVibration(amplitude, duration, frequency);
-
-                heldObject = hitItem;
+                frameIndex = 0;
             }
+
+            prevTransformPos = rayTransform.position;
         }
     }
 
 
-
-
-    private Vector3 prevPos;
-    private Vector3[] savedVelocity;
-
-    public int frameAmount;
-    private int savedVelocityIndex;
-
-
-    private void Start()
+    [BurstCompile]
+    private void UpdateToPickObject()
     {
-        savedVelocity = new Vector3[frameAmount];
+        int interactablesLayer = IM.interactablesLayer;
+
+        //if "GrabState.OnSphereTriger" is true (OverlapSphere is enabled)
+        if (IM.grabState.HasFlag(GrabState.OnSphereTrigger))
+        {
+            Vector3 overlapSphereTransformPos = overlapSphereTransform.position;
+            float overlapSphereSize = IM.overlapSphereSize;
+
+            //get all objects near your hand
+            int objectsInSphereCount = Physics.OverlapSphereNonAlloc(overlapSphereTransformPos, overlapSphereSize, hitObjectsInSphere, interactablesLayer);
+
+
+            //resize array if there are too little spots in the Collider Array "hitObjectsInSphere"
+            if (objectsInSphereCount > hitObjectsInSphere.Length)
+            {
+                Debug.LogWarning("Too Little Interaction Slots, Sphere check was resized");
+
+                hitObjectsInSphere = Physics.OverlapSphere(overlapSphereTransformPos, overlapSphereSize, interactablesLayer);
+            }
+
+
+            //if there is atleast 1 object in the sphere
+            if (objectsInSphereCount > 0)
+            {
+
+                float closestObjectDistance = 10000;
+                Interactable new_ToPickupObject = null;
+                Interactable targetObject;
+
+
+                //calculate closest object
+                for (int i = 0; i < objectsInSphereCount; i++)
+                {
+                    targetObject = hitObjectsInSphere[i].GetComponent<Interactable>();
+
+                    float distanceToTargetObject = Vector3.Distance(overlapSphereTransformPos, targetObject.transform.position);
+
+                    if (distanceToTargetObject - targetObject.objectSize < closestObjectDistance)
+                    {
+                        new_ToPickupObject = targetObject;
+                        closestObjectDistance = distanceToTargetObject;
+                    }
+                }
+
+                //select the new object and deselect potential previous selected object
+                SelectNewObject(new_ToPickupObject);
+                return;
+            }
+        }
+
+
+        //if "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
+        if (IM.grabState.HasFlag(GrabState.OnRaycast) && Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, IM.interactRayCastRange, interactablesLayer, QueryTriggerInteraction.Collide))
+        {
+            if (rayHit.transform.TryGetComponent(out Interactable new_ToPickupObject))
+            {
+                //select the new object and deselect potential previous selected object
+                SelectNewObject(new_ToPickupObject);
+                return;
+            }
+        }
+
+        //deselect potential previous selected object
+        DeSelectObject();
     }
 
-    private void Update()
+
+    #region Select/Deselect Object
+
+    [BurstCompile]
+    private void SelectNewObject(Interactable new_ToPickupObject)
     {
-        if (heldObject == null || heldObject.isThrowable == false)
+        if (objectSelected)
+        {
+            toPickupObject.DeSelect();
+        }
+
+        toPickupObject = new_ToPickupObject;
+
+        objectSelected = true;
+    }
+
+    [BurstCompile]
+    private void DeSelectObject()
+    {
+        if (objectSelected)
+        {
+            toPickupObject.DeSelect();
+        }
+
+        objectSelected = false;
+    }
+
+    #endregion
+
+
+    #region Drop and Pickup
+
+    [BurstCompile]
+    public void Pickup()
+    {
+        //if the object that is trying to be picked up by this hand, is held by the other hand and canSwapItemFromHands is false, return
+        if (toPickupObject.heldByPlayer && IM.canSwapItemFromHands == false)
         {
             return;
         }
 
-        savedVelocity[savedVelocityIndex] = (handTransform.position - prevPos) / Time.deltaTime;
+        toPickupObject.Pickup(this);
 
-        savedVelocityIndex += 1;
-        if(savedVelocityIndex == frameAmount)
-        {
-            savedVelocityIndex = 0;
-        }
+        heldObject = toPickupObject;
+        isHoldingObject = true;
 
-        prevPos = handTransform.position;
+        hand.SendPickupVibration();
     }
+
 
     [BurstCompile]
     private void Drop()
     {
+        //drop item if it is throwable
         if (heldObject.isThrowable)
         {
             Vector3 velocity = Vector3.zero;
 
             for (int i = 0; i < frameAmount; i++)
             {
-                velocity += savedVelocity[i] / frameAmount;
+                velocity += savedLocalVelocity[i] / frameAmount;
             }
 
-            heldObject.Throw(velocity * throwVlocityMultiplier);
+            heldObject.Throw(velocity * IM.throwVelocityMultiplier);
+        }
+        else
+        {
+            heldObject.Drop();
         }
 
         heldObject = null;
+        isHoldingObject = false;
     }
 
+    #endregion
 
+
+
+
+    #region Spawn BasketBall in Hand
 
     public void TEMP_SpawnBall(InputAction.CallbackContext ctx)
     {
@@ -126,26 +247,15 @@ public class InteractionController : MonoBehaviour
             return;
         }
 
-        Interactable hitItem = BasketBallManager.Instance.RetrieveBasketBall();
+        Interactable toPickupObject = BasketBallManager.Instance.RetrieveBasketBall();
 
-        hitItem.rb = hitItem.transform.GetComponent<Rigidbody>();
-        hitItem.Pickup(this);
+        heldObject = toPickupObject;
 
-        SendVibration(amplitude, duration, frequency);
+        toPickupObject.Pickup(this);
 
-        heldObject = hitItem;
+        hand.SendPickupVibration();
     }
 
+    #endregion
 
-    public void SendVibration(float amplitude, float duration, float frequency)
-    {
-        hapticImpulsePlayer.SendHapticImpulse(amplitude, duration, frequency);
-    }
-
-
-
-    private void OnDrawGizmos()
-    {
-        Debug.DrawLine(handTransform.position, handTransform.position + handTransform.forward * 1000, Color.red);
-    }
 }
