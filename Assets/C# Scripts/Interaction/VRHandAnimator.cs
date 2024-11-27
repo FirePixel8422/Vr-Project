@@ -7,8 +7,8 @@ public class VRHandAnimator : MonoBehaviour
 {
     private Animator anim;
 
-    public float controllerButtonPressPercent;
-    public float _cButtonPressPercent;
+    private float controllerButtonPressPercent;
+    private float _cButtonPressPercent;
     public float valueUpdateSpeed;
 
 
@@ -24,6 +24,11 @@ public class VRHandAnimator : MonoBehaviour
 
     private void Update()
     {
+        if (_cButtonPressPercent == controllerButtonPressPercent)
+        {
+            return;
+        }
+
         _cButtonPressPercent = Mathf.MoveTowards(_cButtonPressPercent, controllerButtonPressPercent, valueUpdateSpeed * Time.deltaTime);
         anim.SetFloat("GrabStrength", _cButtonPressPercent);
     }

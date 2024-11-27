@@ -6,14 +6,14 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Interactable : MonoBehaviour
 {
-    public bool interactable;
-    public bool isThrowable;
+    public bool interactable = true;
+    public bool isThrowable = true;
     public bool heldByPlayer;
 
     public InteractionController connectedHand;
 
-    public float throwVelocityMultiplier;
-    public Vector3 velocityClamp;
+    public float throwVelocityMultiplier = 1;
+    public Vector3 velocityClamp = new Vector3(3, 3, 3);
 
 
     [HideInInspector]
@@ -39,12 +39,13 @@ public class Interactable : MonoBehaviour
 
     public void Throw(Vector3 velocity)
     {
+        connectedHand = null;
+        heldByPlayer = false;
+
         transform.parent = null;
         connectedHand = null;
 
         rb.isKinematic = false;
         rb.velocity = VectorLogic.ClampDirection(velocity * throwVelocityMultiplier, velocityClamp);
-
-        heldByPlayer = false;
     }
 }

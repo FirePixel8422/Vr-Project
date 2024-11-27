@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.Burst;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 
 public class InteractionController : MonoBehaviour
@@ -10,10 +11,20 @@ public class InteractionController : MonoBehaviour
     public float interactRange;
     public bool canSwapItemFromHands;
 
+    public float throwVlocityMultiplier;
+
     public Transform handTransform;
     public Transform heldItemHolder;
 
     private Interactable heldObject;
+
+    
+    public HapticImpulsePlayer hapticImpulsePlayer;
+
+    public float amplitude;
+    public float frequency;
+    public float duration;
+
 
 
     public void OnClick(InputAction.CallbackContext ctx)
@@ -47,6 +58,8 @@ public class InteractionController : MonoBehaviour
                 }
 
                 hitItem.Pickup(this);
+
+                SendVibration(amplitude, duration, frequency);
 
                 heldObject = hitItem;
             }
@@ -98,7 +111,7 @@ public class InteractionController : MonoBehaviour
                 velocity += savedVelocity[i] / frameAmount;
             }
 
-            heldObject.Throw(velocity);
+            heldObject.Throw(velocity * throwVlocityMultiplier);
         }
 
         heldObject = null;
@@ -106,23 +119,33 @@ public class InteractionController : MonoBehaviour
 
 
 
-    public GameObject ball;
-
     public void TEMP_SpawnBall(InputAction.CallbackContext ctx)
     {
-        if(ctx.performed == false || heldObject != null)
+        if (ctx.performed == false || heldObject != null)
         {
             return;
         }
 
-        GameObject ballObj = Instantiate(ball);
+        Interactable hitItem = BasketBallManager.Instance.RetrieveBasketBall();
 
-        Interactable hitItem = ballObj.GetComponent<Interactable>();
+        hitItem.rb = hitItem.transform.GetComponent<Rigidbody>();
+        hitItem.Pickup(this);
 
-        hitItem.transform.SetParent(heldItemHolder, false, false);
-        hitItem.heldByPlayer = true;
+        SendVibration(amplitude, duration, frequency);
 
         heldObject = hitItem;
-        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+
+    public void SendVibration(float amplitude, float duration, float frequency)
+    {
+        hapticImpulsePlayer.SendHapticImpulse(amplitude, duration, frequency);
+    }
+
+
+
+    private void OnDrawGizmos()
+    {
+        Debug.DrawLine(handTransform.position, handTransform.position + handTransform.forward * 1000, Color.red);
     }
 }
