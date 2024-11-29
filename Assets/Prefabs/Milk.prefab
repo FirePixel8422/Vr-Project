@@ -93,7 +93,7 @@ PrefabInstance:
       addedObject: {fileID: 294836514684851623}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5640195977383888542}
+      addedObject: {fileID: 705917491734824687}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       insertIndex: -1
       addedObject: {fileID: 28296825814994326}
@@ -127,14 +127,14 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.15, y: 0.31086212, z: 0.13}
   m_Center: {x: 0, y: 0.15517032, z: 0}
---- !u!65 &5640195977383888542
-BoxCollider:
+--- !u!135 &705917491734824687
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6142594296398573896}
-  m_Material: {fileID: 13400000, guid: 7160e8ad2436c464cb904be6fef70f1b, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -146,8 +146,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.45, y: 0.75, z: 0.4}
-  m_Center: {x: 0, y: 0.15517032, z: 0}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!54 &28296825814994326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -192,4 +192,5 @@ MonoBehaviour:
   heldByPlayer: 0
   throwVelocityMultiplier: 1
   velocityClamp: {x: 8, y: 8, z: 8}
+  minRequiredVelocityXYZ: 0.065
   objectSize: 0

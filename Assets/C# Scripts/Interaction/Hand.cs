@@ -1,9 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using Unity.Burst;
 using UnityEngine;
-using UnityEngine.InputSystem.iOS;
 using UnityEngine.XR.Interaction.Toolkit.Inputs.Haptics;
 
 
@@ -34,6 +31,8 @@ public class Hand : MonoBehaviour
     };
 
     #endregion
+
+    public InteractionController interactionController;
 
     private HapticImpulsePlayer hapticImpulsePlayer;
 

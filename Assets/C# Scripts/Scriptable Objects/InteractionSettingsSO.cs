@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
+
 
 
 [Flags]
@@ -13,33 +13,31 @@ public enum GrabState : byte
 }
 
 
-public class InteractionManager : MonoBehaviour
+[CreateAssetMenu(fileName = "Default Settings", menuName = "VR Interaction/Interaction Settings")]
+public class InteractionSettingsSO : ScriptableObject
 {
-    public static InteractionManager Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-
-
     [Header("What pickup methods to use")]
     public GrabState grabState = (GrabState)3;
 
     [Header("What layer should the interactables be on?")]
     public LayerMask interactablesLayer;
 
-    [Header("Can your hand pickup an object in you other hand?")]
-    public bool canSwapItemFromHands = true;
-
-    [Header("Does a newly picked up object gain hand previous velocity?")]
-    public bool pickupsUseOldHandVel;
-
     [Header("Raycast forward pickup range")]
-    public float interactRayCastRange = 2;
+    public float interactRayCastRange = 0.65f;
 
     [Header("Distance to hand pickup range")]
     public float overlapSphereSize = .2f;
+
+
+    [Header("Can your hand pickup an object in you other hand?")]
+    public bool canSwapItemFromHands = true;
+
+    [Header("Should movement velocity be added to throw velocity?")]
+    public bool shouldThrowVelAddMovementVel = true;
+
+    [Header("Should a newly picked up object gain hand previous velocity?")]
+    public bool pickupsUseOldHandVel = true;
+
 
     [Header("Does not affect the velocity clamp of interactables")]
     public float throwVelocityMultiplier = 1.5f;
