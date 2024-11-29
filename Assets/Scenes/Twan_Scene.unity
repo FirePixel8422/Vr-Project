@@ -472,6 +472,10 @@ PrefabInstance:
       value: stoel (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6571038171018156833, guid: e9a71bec1abbbeb4aa353bb1c0620ec1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571038171018156833, guid: e9a71bec1abbbeb4aa353bb1c0620ec1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.032
       objectReference: {fileID: 0}
