@@ -47,25 +47,9 @@ public class InteractionManager : MonoBehaviour
     [Header("Array Size of the OverlapSphere")]
     public int maxExpectedObjectInSphere = 15;
 
-    [Header("Vibration of the controller when an object is picked up")]
-    public VibrationParamaters pickupVibrationParams = new VibrationParamaters(1, 0, 0.2f);
-}
+    [Header("Vibration of controller when object is picked up")]
+    public VibrationParamaters pickupVibrationParams = new VibrationParamaters(0.6f, 0.25f);
 
-
-[System.Serializable]
-public struct VibrationParamaters
-{
-    public VibrationParamaters(float _amplitude, float _frequency, float _duration)
-    {
-        amplitude = _amplitude;
-        frequency = _frequency;
-        duration = _duration;
-    }
-
-    [Range(0f, 1f)]
-    public float amplitude;
-
-    public float frequency;
-    
-    public float duration;
+    [Header("\nVibration of controller when object is selected for picking up")]
+    public VibrationParamaters selectPickupVibrationParams = new VibrationParamaters(.05f, 0.1f);
 }

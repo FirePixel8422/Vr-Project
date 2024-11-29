@@ -31,12 +31,6 @@ public class InteractionController : MonoBehaviour
     private RaycastHit rayHit;
 
 
-    private Vector3 prevTransformPos;
-    private Vector3[] savedLocalVelocity;
-
-    public int frameAmount;
-    private int frameIndex;
-
 
     [BurstCompile]
     public void OnClick(InputAction.CallbackContext ctx)
@@ -77,17 +71,11 @@ public class InteractionController : MonoBehaviour
         //if you are holding something and it is throwable (Or "pickupsUseOldHandVel" is true), start doing velocity calculations
         if (IM.pickupsUseOldHandVel || (heldObject != null && heldObject))
         {
-            savedLocalVelocity[frameIndex] = (rayTransform.position - prevTransformPos) / Time.deltaTime;
-
-            frameIndex += 1;
-            if (frameIndex == frameAmount)
-            {
-                frameIndex = 0;
-            }
-
-            prevTransformPos = rayTransform.position;
+            CalculateHandVelocity();
         }
     }
+
+
 
 
     [BurstCompile]
@@ -137,8 +125,12 @@ public class InteractionController : MonoBehaviour
                     }
                 }
 
-                //select the new object and deselect potential previous selected object
-                SelectNewObject(new_ToPickupObject);
+                //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
+                if (objectSelected == false || new_ToPickupObject != toPickupObject)
+                {
+                    SelectNewObject(new_ToPickupObject);
+                }
+
                 return;
             }
         }
@@ -149,8 +141,12 @@ public class InteractionController : MonoBehaviour
         {
             if (rayHit.transform.TryGetComponent(out Interactable new_ToPickupObject))
             {
-                //select the new object and deselect potential previous selected object
-                SelectNewObject(new_ToPickupObject);
+                //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
+                if (objectSelected == false || new_ToPickupObject != toPickupObject)
+                {
+                    SelectNewObject(new_ToPickupObject);
+                }
+
                 return;
             }
         }
@@ -158,6 +154,8 @@ public class InteractionController : MonoBehaviour
         //deselect potential previous selected object
         DeSelectObject();
     }
+
+
 
 
     #region Select/Deselect Object
@@ -173,6 +171,8 @@ public class InteractionController : MonoBehaviour
         toPickupObject = new_ToPickupObject;
 
         objectSelected = true;
+
+        hand.SendVibration(IM.selectPickupVibrationParams);
     }
 
     [BurstCompile]
@@ -187,6 +187,8 @@ public class InteractionController : MonoBehaviour
     }
 
     #endregion
+
+
 
 
     #region Drop and Pickup
@@ -205,7 +207,7 @@ public class InteractionController : MonoBehaviour
         heldObject = toPickupObject;
         isHoldingObject = true;
 
-        hand.SendPickupVibration();
+        hand.SendVibration(IM.pickupVibrationParams);
     }
 
 
@@ -238,6 +240,37 @@ public class InteractionController : MonoBehaviour
 
 
 
+    #region CalculateHandVelocity
+
+
+    private Vector3 prevTransformPos;
+    private Vector3[] savedLocalVelocity;
+
+    public int frameAmount;
+    private int frameIndex;
+
+
+    [BurstCompile]
+    private void CalculateHandVelocity()
+    {
+        //Calculate hand velocity based on hand movement
+
+        savedLocalVelocity[frameIndex] = (transform.localPosition - prevTransformPos) / Time.deltaTime;
+
+        frameIndex += 1;
+        if (frameIndex == frameAmount)
+        {
+            frameIndex = 0;
+        }
+
+        prevTransformPos = transform.localPosition;
+    }
+
+    #endregion
+
+
+
+
     #region Spawn BasketBall in Hand
 
     public void TEMP_SpawnBall(InputAction.CallbackContext ctx)
@@ -249,11 +282,12 @@ public class InteractionController : MonoBehaviour
 
         Interactable toPickupObject = BasketBallManager.Instance.RetrieveBasketBall();
 
-        heldObject = toPickupObject;
-
         toPickupObject.Pickup(this);
 
-        hand.SendPickupVibration();
+        heldObject = toPickupObject;
+        isHoldingObject = true;
+
+        hand.SendVibration(IM.pickupVibrationParams);
     }
 
     #endregion

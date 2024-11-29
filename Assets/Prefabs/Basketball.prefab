@@ -47,9 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confetti: {fileID: 4126817589366723204}
-  amplitude: 1
-  frequency: 1
-  duration: 3
+  vibrationParams:
+    amplitude: 1
+    duration: 0.25
+    pulseCount: 6
+    pulseInterval: 0.025
 --- !u!135 &8344688849852837851
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -283,11 +285,9 @@ MonoBehaviour:
   interactable: 1
   isThrowable: 1
   heldByPlayer: 0
-  connectedHand: {fileID: 0}
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 10, y: 10, z: 10}
   objectSize: 0
-  rb: {fileID: 0}
 --- !u!1001 &9062022376189945862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,6 +296,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3747200156018439261}
     m_Modifications:
+    - target: {fileID: 2524459669965159215, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2524459669965159215, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
       propertyPath: playOnAwake
       value: 0
@@ -357,12 +361,24 @@ PrefabInstance:
       value: Confetti_blast_multicolor
       objectReference: {fileID: 0}
     - target: {fileID: 4938095755617958530, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938095755617958530, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4938095756042210527, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      propertyPath: stopAction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4938095756042210527, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5169766777476003618, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
+      propertyPath: stopAction
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5169766777476003618, guid: 2e79f16be10fbd14f8d5ef191f8db4aa, type: 3}
       propertyPath: playOnAwake

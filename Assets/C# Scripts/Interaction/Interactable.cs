@@ -89,6 +89,17 @@ public class Interactable : MonoBehaviour
     }
 
 
+    private void OnDestroy()
+    {
+        interactable = false;
+
+        if (connectedHand != null)
+        {
+            connectedHand.isHoldingObject = false;
+        }
+    }
+
+
 
     private void OnDrawGizmos()
     {
