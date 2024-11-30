@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hand Interaction Settings
   m_EditorClassIdentifier: 
   grabState: 255
+  interactionPriorityMode: 2
   interactablesLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class InteractionController : MonoBehaviour
 {
     private Hand hand;
-    public InteractionSettingsSO settings;
+    public HandInteractionSettingsSO settings;
 
 
     [SerializeField]
@@ -65,6 +65,8 @@ public class InteractionController : MonoBehaviour
     }
 
 
+
+
     [BurstCompile]
     private void Update()
     {
@@ -84,82 +86,123 @@ public class InteractionController : MonoBehaviour
 
 
 
+    #region UpdateToPickupObject
+
     [BurstCompile]
     private void UpdateToPickObject()
     {
-        int interactablesLayer = settings.interactablesLayer;
-
-        //if "GrabState.OnSphereTriger" is true (OverlapSphere is enabled)
-        if (settings.grabState.HasFlag(GrabState.OnSphereTrigger))
+        if (settings.interactionPriorityMode == InteractionPriorityMode.SphereTrigger)
         {
-            Vector3 overlapSphereTransformPos = overlapSphereTransform.position;
-            float overlapSphereSize = settings.overlapSphereSize;
-
-            //get all objects near your hand
-            int objectsInSphereCount = Physics.OverlapSphereNonAlloc(overlapSphereTransformPos, overlapSphereSize, hitObjectsInSphere, interactablesLayer);
-
-
-            //resize array if there are too little spots in the Collider Array "hitObjectsInSphere"
-            if (objectsInSphereCount > hitObjectsInSphere.Length)
+            //if "GrabState.OnSphereTrigger" is true (OverlapSphere is enabled)
+            if (settings.grabState.HasFlag(GrabState.OnSphereTrigger) && CreateOverlapSphere(overlapSphereTransform.position, settings.overlapSphereSize, settings.interactablesLayer))
             {
-                Debug.LogWarning("Too Little Interaction Slots, Sphere check was resized");
-
-                hitObjectsInSphere = Physics.OverlapSphere(overlapSphereTransformPos, overlapSphereSize, interactablesLayer);
+                return;
             }
 
-
-            //if there is atleast 1 object in the sphere
-            if (objectsInSphereCount > 0)
+            //if overlapSphere missed and "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
+            if (settings.grabState.HasFlag(GrabState.OnRaycast) && ShootRayCast(settings.interactablesLayer))
             {
+                return;
+            }
+        }
+        else
+        {
+            //if "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
+            if (settings.grabState.HasFlag(GrabState.OnRaycast) && ShootRayCast(settings.interactablesLayer))
+            {
+                return;
+            }
 
-                float closestObjectDistance = 10000;
-                Interactable new_ToPickupObject = null;
-                Interactable targetObject;
-
-
-                //calculate closest object
-                for (int i = 0; i < objectsInSphereCount; i++)
-                {
-                    targetObject = hitObjectsInSphere[i].GetComponent<Interactable>();
-
-                    float distanceToTargetObject = Vector3.Distance(overlapSphereTransformPos, targetObject.transform.position);
-
-                    if (distanceToTargetObject - targetObject.objectSize < closestObjectDistance)
-                    {
-                        new_ToPickupObject = targetObject;
-                        closestObjectDistance = distanceToTargetObject;
-                    }
-                }
-
-                //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
-                if (objectSelected == false || new_ToPickupObject != toPickupObject)
-                {
-                    SelectNewObject(new_ToPickupObject);
-                }
-
+            //if raycast missed and "GrabState.OnSphereTrigger" is true (OverlapSphere is enabled)
+            if (settings.grabState.HasFlag(GrabState.OnSphereTrigger) && CreateOverlapSphere(overlapSphereTransform.position, settings.overlapSphereSize, settings.interactablesLayer))
+            {
                 return;
             }
         }
 
-
-        //if "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
-        if (settings.grabState.HasFlag(GrabState.OnRaycast) && Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.interactRayCastRange, interactablesLayer, QueryTriggerInteraction.Collide))
-        {
-            if (rayHit.transform.TryGetComponent(out Interactable new_ToPickupObject))
-            {
-                //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
-                if (objectSelected == false || new_ToPickupObject != toPickupObject)
-                {
-                    SelectNewObject(new_ToPickupObject);
-                }
-
-                return;
-            }
-        }
-
-        //deselect potential previous selected object
+        //deselect potential previous selected object if no object is in range anymore
         DeSelectObject();
     }
+
+
+
+
+    /// <returns>OverlapSphere Succes State</returns>
+    [BurstCompile]
+    private bool CreateOverlapSphere(Vector3 overlapSphereTransformPos, float overlapSphereSize, int interactablesLayer)
+    {
+        //get all objects near your hand
+        int objectsInSphereCount = Physics.OverlapSphereNonAlloc(overlapSphereTransformPos, overlapSphereSize, hitObjectsInSphere, interactablesLayer);
+
+
+        //resize array if there are too little spots in the Collider Array "hitObjectsInSphere"
+        if (objectsInSphereCount > hitObjectsInSphere.Length)
+        {
+            Debug.LogWarning("Too Little Interaction Slots, Sphere check was resized");
+
+            hitObjectsInSphere = Physics.OverlapSphere(overlapSphereTransformPos, overlapSphereSize, interactablesLayer);
+        }
+
+
+        //if there is atleast 1 object in the sphere
+        if (objectsInSphereCount > 0)
+        {
+            float closestObjectDistance = 10000;
+            Interactable new_ToPickupObject = null;
+            Interactable targetObject;
+
+
+            //calculate closest object
+            for (int i = 0; i < objectsInSphereCount; i++)
+            {
+                targetObject = hitObjectsInSphere[i].GetComponent<Interactable>();
+
+                float distanceToTargetObject = Vector3.Distance(overlapSphereTransformPos, targetObject.transform.position);
+
+                if (distanceToTargetObject - targetObject.objectSize < closestObjectDistance)
+                {
+                    new_ToPickupObject = targetObject;
+                    closestObjectDistance = distanceToTargetObject;
+                }
+            }
+
+            //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
+            if (objectSelected == false || new_ToPickupObject != toPickupObject)
+            {
+                SelectNewObject(new_ToPickupObject);
+            }
+
+            //new object found
+            return true;
+        }
+
+        //no new object found
+        return false;
+    }
+
+
+    /// <returns>RayCast Succes State</returns>
+    [BurstCompile]
+    private bool ShootRayCast(int interactablesLayer)
+    {
+        if (Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.interactRayCastRange, interactablesLayer, QueryTriggerInteraction.Collide)
+                && rayHit.transform.TryGetComponent(out Interactable new_ToPickupObject))
+        {
+            //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
+            if (objectSelected == false || new_ToPickupObject != toPickupObject)
+            {
+                SelectNewObject(new_ToPickupObject);
+            }
+
+            //new object found
+            return true;
+        }
+
+        //no new object found
+        return false;
+    }
+
+    #endregion
 
 
 

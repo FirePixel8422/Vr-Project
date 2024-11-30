@@ -12,12 +12,21 @@ public enum GrabState : byte
     OnRaycast = 2,
 }
 
+public enum InteractionPriorityMode : byte
+{
+    SphereTrigger = 1,
+    Raycast = 2,
+}
 
-[CreateAssetMenu(fileName = "Default Settings", menuName = "VR Interaction/Interaction Settings")]
-public class InteractionSettingsSO : ScriptableObject
+
+[CreateAssetMenu(fileName = "Default Settings", menuName = "VR Interaction/Hand Interaction Settings")]
+public class HandInteractionSettingsSO : ScriptableObject
 {
     [Header("What pickup methods to use")]
     public GrabState grabState = (GrabState)3;
+    
+    [Header("What pickup methods to use")]
+    public InteractionPriorityMode interactionPriorityMode = (InteractionPriorityMode)1;
 
     [Header("What layer should the interactables be on?")]
     public LayerMask interactablesLayer;
