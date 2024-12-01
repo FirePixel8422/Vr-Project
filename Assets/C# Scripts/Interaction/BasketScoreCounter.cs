@@ -20,13 +20,13 @@ public class BasketScoreCounter : MonoBehaviour
     public float endDelay;
 
 
-    public void UpdateScore()
+    public void UpdateScore(int count)
     {
-        score += 1;
+        score += count;
 
-        if (score == 100)
+        if (score >= 100)
         {
-            score = 0;
+            score -= 100;
         }
 
         //if number has changed

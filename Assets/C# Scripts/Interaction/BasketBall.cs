@@ -2,34 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasketBall : MonoBehaviour
+public class BasketBall : Interactable
 {
-    public ParticleSystem confetti;
-
-    public VibrationParamaters vibrationParams;
-
-
-
-    private void Start()
+    public override void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
-        confetti.transform.parent = null;
-        transform.parent.GetComponent<Rigidbody>().sleepThreshold = 0.00001f;
-    }
+        base.Throw(velocity, angularVelocity);
 
-
-    private void OnTriggerExit(Collider coll)
-    {
-        if (coll.transform.gameObject.CompareTag("Basket"))
+        BasketBallTrigger ball = GetComponentInChildren<BasketBallTrigger>();
+        if (ball != null)
         {
-            coll.GetComponent<BasketScoreCounter>().UpdateScore();
-
-            Hand.Left.SendVibration(vibrationParams);
-            Hand.Right.SendVibration(vibrationParams);
-
-            confetti.transform.position = transform.position;
-            confetti.Play();
-
-            Destroy(transform.parent.gameObject);
+            ball.insideRingLeft = TwoPointerZoneDetector.InsideRingLeft;
+            ball.insideRingRight = TwoPointerZoneDetector.InsideRingRight;
         }
     }
 }

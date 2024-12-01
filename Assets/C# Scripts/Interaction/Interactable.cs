@@ -1,20 +1,33 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst;
 using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.UI;
+
+
+
+
+public enum PickupRotationMode : byte
+{
+    Custom,
+    SnapToHand,
+    KeepWorldRotation,
+}
 
 
 [RequireComponent(typeof(Rigidbody))]
 [BurstCompile]
 public class Interactable : MonoBehaviour
 {
+    private InteractionController connectedHand;
+
+
     public bool interactable = true;
     public bool isThrowable = true;
     public bool heldByPlayer;
 
-    private InteractionController connectedHand;
+    public PickupRotationMode pickupRotationMode = PickupRotationMode.KeepWorldRotation;
 
     public float throwVelocityMultiplier = 1;
 
@@ -39,21 +52,27 @@ public class Interactable : MonoBehaviour
 
 
 
+    #region Select And Deselect
+
     [BurstCompile]
-    public void Select()
+    public virtual void Select()
     {
 
     }
 
     [BurstCompile]
-    public void DeSelect()
+    public virtual void DeSelect()
     {
 
     }
 
+    #endregion
+
+
+
 
     [BurstCompile]
-    public void Pickup(InteractionController hand)
+    public virtual void Pickup(InteractionController hand)
     {
         if (connectedHand != null)
         {
@@ -63,13 +82,13 @@ public class Interactable : MonoBehaviour
         connectedHand = hand;
         heldByPlayer = true;
 
-        transform.SetParent(hand.heldItemHolder, false, false);
+        transform.SetParent(hand.heldItemHolder, false, pickupRotationMode == PickupRotationMode.KeepWorldRotation);
         rb.isKinematic = true;
     }
 
 
     [BurstCompile]
-    public void Throw(Vector3 velocity, Vector3 angularVelocity)
+    public virtual void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
         connectedHand = null;
         heldByPlayer = false;
@@ -100,7 +119,7 @@ public class Interactable : MonoBehaviour
 
 
     [BurstCompile]
-    public void Drop()
+    public virtual void Drop()
     {
         connectedHand = null;
         heldByPlayer = false;
@@ -110,6 +129,8 @@ public class Interactable : MonoBehaviour
 
         rb.isKinematic = false;
     }
+
+
 
 
     private void OnDestroy()
@@ -126,8 +147,25 @@ public class Interactable : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, objectSize);   
+        if (DEBUGMODE == false)
+        {
+            return;
+        }
+
+        Gizmos.DrawWireSphere(transform.position, objectSize);
+
+
+        rb = GetComponent<Rigidbody>();
+
+        if (rb != null)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawSphere(transform.TransformPoint(rb.centerOfMass), 0.03f); // Visualize center of mass
+        }
     }
+
+
+    public bool DEBUGMODE;
 
     private void OnValidate()
     {
