@@ -99,7 +99,7 @@ PrefabInstance:
       addedObject: {fileID: 28296825814994326}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6071930137004949866}
+      addedObject: {fileID: -5877840951257209523}
   m_SourcePrefab: {fileID: 100100000, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
 --- !u!1 &6142594296398573896 stripped
 GameObject:
@@ -175,7 +175,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6071930137004949866
+--- !u!114 &-5877840951257209523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -184,13 +184,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6142594296398573896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 354c65634d3a66840bc0245e2acec1cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactable: 1
   isThrowable: 1
   heldByPlayer: 0
-  throwVelocityMultiplier: 1
-  velocityClamp: {x: 8, y: 8, z: 8}
-  minRequiredVelocityXYZ: 0.065
   objectSize: 0
+  pickupRotationMode: 2
+  throwVelocityMultiplier: 0.85
+  velocityClamp: {x: 6, y: 6, z: 6}
+  minRequiredVelocityXYZ: 0.065
+  debugRBCenterOfMass: 0

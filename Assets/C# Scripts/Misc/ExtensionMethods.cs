@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public static class ExtensionMethods
@@ -74,6 +76,43 @@ public static class ExtensionMethods
             trans.localScale = Vector3.one;
         }
     }
+
+
+    #region Try GetComponent(s) Parent and children
+
+    public static bool TryGetComponentInChild<T>(this GameObject GO, out T component) where T : Component
+    {
+        component = GO.GetComponentInChildren<T>();
+        return component != null;
+    }
+
+    public static bool TryGetComponentInChild<T>(this GameObject GO, out T component, bool includeInactive) where T : Component
+    {
+        component = GO.GetComponentInChildren<T>(includeInactive);
+        return component != null;
+    }
+
+    public static bool TryGetComponentsInChildren<T>(this GameObject GO, out T[] components) where T : Component
+    {
+        components = GO.GetComponentsInChildren<T>();
+
+        return components.Length > 0;
+    }
+    public static bool TryGetComponentsInChildren<T>(this GameObject GO, out T[] components, bool includeInactive) where T : Component
+    {
+        components = GO.GetComponentsInChildren<T>(includeInactive);
+
+        return components.Length > 0;
+    }
+
+    public static bool TryGetComponentInParent<T>(this GameObject GO, out T component) where T : Component
+    {
+        component = GO.transform.parent.GetComponent<T>();
+        return component != null;
+    }
+
+    #endregion
+
 }
 public static class VectorLogic
 {

@@ -100,7 +100,7 @@ public class InteractionController : MonoBehaviour
             }
 
             //if overlapSphere missed and "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
-            if (settings.grabState.HasFlag(GrabState.OnRaycast) && ShootRayCast(settings.interactablesLayer))
+            if (settings.grabState.HasFlag(GrabState.OnRaycast) && ShootRayCast())
             {
                 return;
             }
@@ -108,7 +108,7 @@ public class InteractionController : MonoBehaviour
         else
         {
             //if "GrabState.OnRaycast" is true (rayCasts are enabled) and there are no objects near your hand, check if there is one in front of your hand
-            if (settings.grabState.HasFlag(GrabState.OnRaycast) && ShootRayCast(settings.interactablesLayer))
+            if (settings.grabState.HasFlag(GrabState.OnRaycast) && ShootRayCast())
             {
                 return;
             }
@@ -183,9 +183,9 @@ public class InteractionController : MonoBehaviour
 
     /// <returns>RayCast Succes State</returns>
     [BurstCompile]
-    private bool ShootRayCast(int interactablesLayer)
+    private bool ShootRayCast()
     {
-        if (Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.interactRayCastRange, interactablesLayer, QueryTriggerInteraction.Collide)
+        if (Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.interactRayCastRange, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide)
                 && rayHit.transform.TryGetComponent(out Interactable new_ToPickupObject))
         {
             //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
@@ -214,7 +214,7 @@ public class InteractionController : MonoBehaviour
     {
         if (objectSelected)
         {
-            toPickupObject.DeSelect();
+            toPickupObject.OnDeSelect();
         }
 
         toPickupObject = new_ToPickupObject;
@@ -229,7 +229,7 @@ public class InteractionController : MonoBehaviour
     {
         if (objectSelected)
         {
-            toPickupObject.DeSelect();
+            toPickupObject.OnDeSelect();
         }
 
         objectSelected = false;

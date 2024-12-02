@@ -287,12 +287,12 @@ MonoBehaviour:
   interactable: 1
   isThrowable: 1
   heldByPlayer: 0
+  objectSize: 0.1225
   pickupRotationMode: 2
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 10, y: 10, z: 10}
   minRequiredVelocityXYZ: 0.065
-  objectSize: 0
-  DEBUGMODE: 0
+  debugRBCenterOfMass: 0
 --- !u!1001 &9062022376189945862
 PrefabInstance:
   m_ObjectHideFlags: 0
