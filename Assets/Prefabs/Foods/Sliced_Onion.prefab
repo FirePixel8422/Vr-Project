@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5.037637
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.907
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalRotation.w
@@ -73,6 +73,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8152836222032442769}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9195052907813047493}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2439973225986979098}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1173807973805582922}
   m_SourcePrefab: {fileID: 100100000, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
 --- !u!1 &2762003115062297974 stripped
 GameObject:
@@ -121,9 +130,6 @@ MonoBehaviour:
   interactable: 1
   isThrowable: 1
   heldByPlayer: 0
-  throwVelocityMultiplier: 1
-  velocityClamp: {x: 3, y: 3, z: 3}
-  minRequiredVelocityXYZ: 0.065
   objectSize: 0
 --- !u!114 &8152836222032442769
 MonoBehaviour:
@@ -142,3 +148,67 @@ MonoBehaviour:
     requiredFood: []
     requiredApplience: {fileID: 0}
     foodIndex: 0
+--- !u!114 &9195052907813047493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762003115062297974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  isThrowable: 1
+  heldByPlayer: 0
+  objectSize: 0
+  pickupRotationMode: 2
+  throwVelocityMultiplier: 1
+  velocityClamp: {x: 3, y: 3, z: 3}
+  minRequiredVelocityXYZ: 0.065
+  debugRBCenterOfMass: 0
+--- !u!64 &2439973225986979098
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762003115062297974}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8691780276856062721, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
+--- !u!135 &1173807973805582922
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2762003115062297974}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0.0042458884, y: 0.023694806, z: -0.004492268}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7611959843825639426}
   - component: {fileID: 7662624126906016899}
   - component: {fileID: 3238098170374516274}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5252813524630722694}
   - component: {fileID: 8632136205399284481}
   - component: {fileID: 6101544172266160203}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1928955479792670159}
   - component: {fileID: 5438064546181037720}
   - component: {fileID: 6397460963825639064}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +258,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3695182101769414024}
-  m_Layer: 0
+  - component: {fileID: 6054846807121020116}
+  - component: {fileID: 3750790429951756016}
+  - component: {fileID: 7586035373855413986}
+  - component: {fileID: 4540098665723439288}
+  m_Layer: 6
   m_Name: Brandblusser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,6 +290,97 @@ Transform:
   - {fileID: 7611959843825639426}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6054846807121020116
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038669107114590002}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3750790429951756016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038669107114590002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  isThrowable: 1
+  heldByPlayer: 0
+  objectSize: 0
+  pickupRotationMode: 2
+  throwVelocityMultiplier: 1
+  velocityClamp: {x: 3, y: 3, z: 3}
+  minRequiredVelocityXYZ: 0.065
+  debugRBCenterOfMass: 0
+--- !u!64 &7586035373855413986
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038669107114590002}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7387706064836869012, guid: b756112496cac7a458f23ef8785de074, type: 3}
+--- !u!135 &4540098665723439288
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038669107114590002}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.26, z: 0}
 --- !u!1 &4575348453783348761
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +392,7 @@ GameObject:
   - component: {fileID: 5519705089969660344}
   - component: {fileID: 2281247025089135328}
   - component: {fileID: 1511085586847263254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +475,7 @@ GameObject:
   - component: {fileID: 7588174506205237426}
   - component: {fileID: 993843879594218098}
   - component: {fileID: 6263582082926602969}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +558,7 @@ GameObject:
   - component: {fileID: 8822497872646146471}
   - component: {fileID: 8505763321076135678}
   - component: {fileID: 4278862384718326234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
