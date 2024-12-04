@@ -16,7 +16,7 @@ public class FractureController : MonoBehaviour
         {
             Vector3 vel = collision.relativeVelocity;
 
-            if( vel.x + vel.y + vel.z > fractureTreshold * pickupable.weight)
+            if((vel.x + vel.y + vel.z) * pickupable.weight > fractureTreshold)
             {
                 Fracture();
             }
@@ -25,6 +25,8 @@ public class FractureController : MonoBehaviour
 
     private void Fracture()
     {
+        Destroy(gameObject);
+
         fracturesParent.transform.parent = null;
         fracturesParent.SetActive(true);
         fracturesParent.transform.DetachChildren();

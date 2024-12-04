@@ -8,10 +8,10 @@ using UnityEngine.XR;
 public class BowlingController : InteractableButton
 {
     public Transform[] bowlingPawnSpawnpoints;
-    public Transform bowlingPawnPrefab;
+    public Pickupable bowlingPawnPrefab;
 
     private Vector3[] spawnPositions;
-    private Transform[] bowlingPawns;
+    private Pickupable[] bowlingPawns;
 
     public VibrationParamaters vibrationParams;
 
@@ -22,7 +22,7 @@ public class BowlingController : InteractableButton
         base.Start();
 
         spawnPositions = new Vector3[bowlingPawnSpawnpoints.Length];
-        bowlingPawns = new Transform[bowlingPawnSpawnpoints.Length];
+        bowlingPawns = new Pickupable[bowlingPawnSpawnpoints.Length];
 
         for (int i = 0; i < bowlingPawnSpawnpoints.Length; i++)
         {
@@ -47,7 +47,14 @@ public class BowlingController : InteractableButton
     {
         for (int i = 0; i < bowlingPawns.Length; i++)
         {
-            bowlingPawns[i].SetPositionAndRotation(spawnPositions[i], Quaternion.identity);
+            if (bowlingPawns[i].connectedHand != null)
+            {
+                bowlingPawns[i].connectedHand.isHoldingObject = false;
+            }
+
+            bowlingPawns[i].Drop();
+
+            bowlingPawns[i].transform.SetPositionAndRotation(spawnPositions[i], Quaternion.identity);
         }
 
         Hand.Left.SendVibration(vibrationParams);

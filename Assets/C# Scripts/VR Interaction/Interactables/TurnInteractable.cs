@@ -41,6 +41,16 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
     }
 
 
+    public override void Pickup(InteractionController hand)
+    {
+        if (heldByPlayer)
+        {
+            connectedHand.hand.vrHandAnimator.ResetHandTransform();
+        }
+
+        base.Pickup(hand);
+    }
+
     public override void Drop()
     {
         connectedHand.hand.vrHandAnimator.ResetHandTransform();

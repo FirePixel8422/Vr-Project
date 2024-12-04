@@ -11,7 +11,8 @@ using UnityEngine;
 [BurstCompile]
 public class Interactable : MonoBehaviour
 {
-    protected InteractionController connectedHand;
+    [HideInInspector]
+    public InteractionController connectedHand;
 
     public bool interactable = true;
     public bool isThrowable = true;

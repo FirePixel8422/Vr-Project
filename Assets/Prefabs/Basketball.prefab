@@ -288,6 +288,7 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0.1225
+  weight: 1
   pickupRotationMode: 2
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 10, y: 10, z: 10}
