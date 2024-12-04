@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BasketBall : Pickupable
 {
-    protected override void OnThrow(Vector3 velocity, Vector3 angularVelocity)
+    public override void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
-        base.OnThrow(velocity, angularVelocity);
+        base.Throw(velocity, angularVelocity);
 
         BasketBallTrigger ball = GetComponentInChildren<BasketBallTrigger>();
         if (ball != null)

@@ -43,7 +43,7 @@ public class Interactable : MonoBehaviour
     #region Pickup, Throw And Drop
 
     [BurstCompile]
-    public void Pickup(InteractionController hand)
+    public virtual void Pickup(InteractionController hand)
     {
         if (connectedHand != null)
         {
@@ -52,44 +52,26 @@ public class Interactable : MonoBehaviour
 
         connectedHand = hand;
         heldByPlayer = true;
-
-        OnPickup(hand);
-    }
-    protected virtual void OnPickup(InteractionController hand)
-    {
-        return;
     }
 
 
 
 
     [BurstCompile]
-    public void Throw(Vector3 velocity, Vector3 angularVelocity)
+    public virtual void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
         connectedHand = null;
         heldByPlayer = false;
-
-        OnThrow(velocity, angularVelocity);
-    }
-    protected virtual void OnThrow(Vector3 velocity, Vector3 angularVelocity)
-    {
-        return;
     }
 
 
 
 
     [BurstCompile]
-    public void Drop()
+    public virtual void Drop()
     {
         connectedHand = null;
         heldByPlayer = false;
-
-        OnDrop();
-    }
-    protected virtual void OnDrop()
-    {
-        return;
     }
 
     #endregion
@@ -110,14 +92,14 @@ public class Interactable : MonoBehaviour
 
     private void OnValidate()
     {
-        if (gameObject.activeInHierarchy && !Application.isPlaying && Hand.Left != null && Hand.Left.interactionController.settings != null)
+        if (!Application.isPlaying && transform.TryFindObjectOfType(out Hand hand) && hand.interactionController.settings != null)
         {
-            gameObject.layer = Mathf.RoundToInt(Mathf.Log(Hand.Left.interactionController.settings.interactablesLayer.value, 2));
+            gameObject.layer = Mathf.RoundToInt(Mathf.Log(hand.interactionController.settings.interactablesLayer.value, 2));
         }
     }
 
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, objectSize);
     }

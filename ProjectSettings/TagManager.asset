@@ -15,9 +15,9 @@ TagManager:
   - UI
   - Interactable
   - BasketBallTrigger
-  - 
-  - 
-  - 
+  - OutlinedObjects
+  - Player
+  - IgnorePlayer
   - 
   - 
   - 

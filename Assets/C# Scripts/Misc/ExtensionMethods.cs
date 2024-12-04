@@ -78,36 +78,48 @@ public static class ExtensionMethods
     }
 
 
-    #region Try GetComponent(s) Parent and children
+    #region Try GetComponent(s)
 
-    public static bool TryGetComponentInChild<T>(this GameObject GO, out T component) where T : Component
+    public static bool TryGetComponentInChild<T>(this Transform trans, out T component) where T : Component
     {
-        component = GO.GetComponentInChildren<T>();
+        component = trans.GetComponentInChildren<T>();
         return component != null;
     }
 
-    public static bool TryGetComponentInChild<T>(this GameObject GO, out T component, bool includeInactive) where T : Component
+    public static bool TryGetComponentInChild<T>(this Transform trans, out T component, bool includeInactive) where T : Component
     {
-        component = GO.GetComponentInChildren<T>(includeInactive);
+        component = trans.GetComponentInChildren<T>(includeInactive);
         return component != null;
     }
 
-    public static bool TryGetComponentsInChildren<T>(this GameObject GO, out T[] components) where T : Component
+    public static bool TryGetComponentsInChildren<T>(this Transform trans, out T[] components) where T : Component
     {
-        components = GO.GetComponentsInChildren<T>();
+        components = trans.GetComponentsInChildren<T>();
 
         return components.Length > 0;
     }
-    public static bool TryGetComponentsInChildren<T>(this GameObject GO, out T[] components, bool includeInactive) where T : Component
+    public static bool TryGetComponentsInChildren<T>(this Transform trans, out T[] components, bool includeInactive) where T : Component
     {
-        components = GO.GetComponentsInChildren<T>(includeInactive);
+        components = trans.GetComponentsInChildren<T>(includeInactive);
 
         return components.Length > 0;
     }
 
-    public static bool TryGetComponentInParent<T>(this GameObject GO, out T component) where T : Component
+    public static bool TryGetComponentInParent<T>(this Transform trans, out T component) where T : Component
     {
-        component = GO.transform.parent.GetComponent<T>();
+        component = trans.transform.parent.GetComponent<T>();
+        return component != null;
+    }
+
+    public static bool TryFindObjectOfType<T>(this Transform trans, out T component) where T : Component
+    {
+        component = UnityEngine.Object.FindObjectOfType<T>();
+        return component != null;
+    }
+
+    public static bool TryFindObjectOfType<T>(this Transform trans, out T component, bool includeInactive) where T : Component
+    {
+        component = UnityEngine.Object.FindObjectOfType<T>(includeInactive);
         return component != null;
     }
 

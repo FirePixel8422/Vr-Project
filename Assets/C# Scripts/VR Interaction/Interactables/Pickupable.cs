@@ -42,16 +42,20 @@ public class Pickupable : Interactable
 
 
     [BurstCompile]
-    protected override void OnPickup(InteractionController hand)
+    public override void Pickup(InteractionController hand)
     {
+        base.Pickup(hand);
+
         transform.SetParent(hand.heldItemHolder, false, pickupRotationMode == PickupRotationMode.KeepWorldRotation);
         rb.isKinematic = true;
     }
 
 
     [BurstCompile]
-    protected override void OnThrow(Vector3 velocity, Vector3 angularVelocity)
+    public override void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
+        base.Throw(velocity, angularVelocity);
+
         transform.parent = null;
 
         rb.isKinematic = false;
@@ -77,8 +81,10 @@ public class Pickupable : Interactable
 
 
     [BurstCompile]
-    protected override void OnDrop()
+    public override void Drop()
     {
+        base.Drop();
+
         transform.parent = null;
 
         rb.isKinematic = false;
@@ -90,9 +96,9 @@ public class Pickupable : Interactable
 
     public bool debugRBCenterOfMass;
 
-    private void OnDrawGizmos()
+    protected override void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, objectSize);
+        base.OnDrawGizmos();
 
         if (debugRBCenterOfMass == false)
         {
