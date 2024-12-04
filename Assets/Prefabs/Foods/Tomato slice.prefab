@@ -159,7 +159,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &5474294372554109867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +176,7 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  weight: 1
   pickupRotationMode: 2
   throwVelocityMultiplier: 1
   velocityClamp: {x: 3, y: 3, z: 3}

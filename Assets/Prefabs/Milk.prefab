@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.00000052683555
+      value: 3.1818032
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.998
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.25
+      value: -4.919
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000021073423
+      value: -0.97337925
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.22920047
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: 333.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -174,7 +174,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &-5877840951257209523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  weight: 1
   pickupRotationMode: 2
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 6, y: 6, z: 6}
