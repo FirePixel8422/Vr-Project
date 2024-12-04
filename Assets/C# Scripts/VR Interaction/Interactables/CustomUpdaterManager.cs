@@ -12,6 +12,7 @@ public class InteractableUpdateManager : MonoBehaviour
 
     //extra Instance name for simplicity
     public static InteractableUpdateManager Instance => Singleton;
+
     [BurstCompile]
     private void Awake()
     {
@@ -24,6 +25,7 @@ public class InteractableUpdateManager : MonoBehaviour
         Singleton = this;
 
         updateStack = new List<ICustomUpdater>(updateListPreSizeCap);
+        lateUpdateStack = new List<ICustomLateUpdater>(updateListPreSizeCap);
     }
 
 
@@ -31,12 +33,17 @@ public class InteractableUpdateManager : MonoBehaviour
 
 
     public static List<ICustomUpdater> updateStack;
+    public static List<ICustomLateUpdater> lateUpdateStack;
     public int updateListPreSizeCap;
 
 
     public static void AddUpdater(ICustomUpdater newEntry)
     {
         updateStack.Add(newEntry);
+    }
+    public static void AddUpdater(ICustomLateUpdater newEntry)
+    {
+        lateUpdateStack.Add(newEntry);
     }
 
 
@@ -49,6 +56,18 @@ public class InteractableUpdateManager : MonoBehaviour
             if (updateStack[i].requireUpdate)
             {
                 updateStack[i].OnUpdate();
+            }
+        }
+    }
+
+    [BurstCompile]
+    private void LateUpdate()
+    {
+        for (int i = 0; i < lateUpdateStack.Count; i++)
+        {
+            if (lateUpdateStack[i].requireLateUpdate)
+            {
+                lateUpdateStack[i].OnLateUpdate();
             }
         }
     }

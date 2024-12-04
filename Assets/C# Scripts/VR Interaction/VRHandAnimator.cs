@@ -7,8 +7,8 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
 {
     private Animator anim;
 
-    private float controllerButtonPressPercent;
-    private float _cButtonPressPercent;
+    [SerializeField] private float controllerButtonPressPercent;
+    [SerializeField] private float _cButtonPressPercent;
     public float valueUpdateSpeed;
 
     private Vector3 localPos;
@@ -18,6 +18,11 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        localPos = transform.localPosition;
+        localRot = transform.localRotation;
+
+        InteractableUpdateManager.AddUpdater(this);
     }
 
     public void OnBigTriggerStateChange(InputAction.CallbackContext ctx)
@@ -26,7 +31,7 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
     }
 
 
-    public bool requireUpdate => _cButtonPressPercent == controllerButtonPressPercent;
+    public bool requireUpdate => _cButtonPressPercent != controllerButtonPressPercent;
 
     public void OnUpdate()
     {

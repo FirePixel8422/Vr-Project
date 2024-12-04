@@ -13,7 +13,7 @@ public enum TurnConstraints : byte
 }
 
 [BurstCompile]
-public class TurnInteractable : Interactable, ICustomUpdater
+public class TurnInteractable : Interactable, ICustomLateUpdater
 {
     [Header("Highest parent of this interactable")]
     public Transform objectRoot;
@@ -43,26 +43,26 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
     public override void Drop()
     {
-        base.Drop();
-
         connectedHand.hand.vrHandAnimator.ResetHandTransform();
+
+        base.Drop();
     }
 
     public override void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
-        base.Throw(velocity, angularVelocity);
-
         connectedHand.hand.vrHandAnimator.ResetHandTransform();
+
+        base.Throw(velocity, angularVelocity);
     }
 
 
 
 
-    public bool requireUpdate => heldByPlayer;
+    public bool requireLateUpdate => heldByPlayer;
 
 
     [BurstCompile]
-    public void OnUpdate()
+    public void OnLateUpdate()
     {
         Vector3 transformPos = transform.position;
         Vector3 handTransformPos = connectedHand.transform.position;
@@ -84,11 +84,11 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
         if (handDistanceToTransform > interactionRange)
         {
+            connectedHand.hand.vrHandAnimator.ResetHandTransform();
+
             connectedHand.isHoldingObject = false;
             connectedHand = null;
             heldByPlayer = false;
-
-            connectedHand.hand.vrHandAnimator.ResetHandTransform();
         }
         else
         {
