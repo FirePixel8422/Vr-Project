@@ -33,6 +33,7 @@ public class Hand : MonoBehaviour
     #endregion
 
     public InteractionController interactionController;
+    public VRHandAnimator vrHandAnimator;
 
     private HapticImpulsePlayer hapticImpulsePlayer;
 

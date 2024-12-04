@@ -23,18 +23,18 @@ public class InteractableUpdateManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         Singleton = this;
 
-        updateStack = new List<IInteractableUpdater>(updateListPreSizeCap);
+        updateStack = new List<ICustomUpdater>(updateListPreSizeCap);
     }
 
 
 
 
 
-    public static List<IInteractableUpdater> updateStack;
+    public static List<ICustomUpdater> updateStack;
     public int updateListPreSizeCap;
 
 
-    public static void AddUpdater(IInteractableUpdater newEntry)
+    public static void AddUpdater(ICustomUpdater newEntry)
     {
         updateStack.Add(newEntry);
     }

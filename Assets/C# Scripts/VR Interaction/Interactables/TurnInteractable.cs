@@ -13,7 +13,7 @@ public enum TurnConstraints : byte
 }
 
 [BurstCompile]
-public class TurnInteractable : Interactable, IInteractableUpdater
+public class TurnInteractable : Interactable, ICustomUpdater
 {
     [Header("Highest parent of this interactable")]
     public Transform objectRoot;
@@ -21,9 +21,12 @@ public class TurnInteractable : Interactable, IInteractableUpdater
     [Header("What axises can this interactable turn?")]
     public TurnConstraints turnOnAxis;
 
+
     public bool snapPlayerHandToTransform;
+    public Transform snapTransform;
 
     public float interactionRange;
+
 
     //public Transform DEBUG_HAND;
 
@@ -35,6 +38,21 @@ public class TurnInteractable : Interactable, IInteractableUpdater
     private void Start()
     {
         InteractableUpdateManager.AddUpdater(this);
+    }
+
+
+    public override void Drop()
+    {
+        base.Drop();
+
+        connectedHand.hand.vrHandAnimator.ResetHandTransform();
+    }
+
+    public override void Throw(Vector3 velocity, Vector3 angularVelocity)
+    {
+        base.Throw(velocity, angularVelocity);
+
+        connectedHand.hand.vrHandAnimator.ResetHandTransform();
     }
 
 
@@ -51,15 +69,16 @@ public class TurnInteractable : Interactable, IInteractableUpdater
 
         if (snapPlayerHandToTransform)
         {
-            SnapHandToTransform();
+            SnapHandToTransform(transformPos, handTransformPos);
         }
 
 
         RotateTransform(transformPos, handTransformPos);
     }
 
+
     [BurstCompile]
-    private void SnapHandToTransform()
+    private void SnapHandToTransform(Vector3 transformPos, Vector3 handTransformPos)
     {
         float handDistanceToTransform = Vector3.Distance(transformPos, handTransformPos);
 
@@ -69,7 +88,11 @@ public class TurnInteractable : Interactable, IInteractableUpdater
             connectedHand = null;
             heldByPlayer = false;
 
-            return;
+            connectedHand.hand.vrHandAnimator.ResetHandTransform();
+        }
+        else
+        {
+            connectedHand.hand.vrHandAnimator.UpdateHandTransform(snapTransform.position, snapTransform.rotation);
         }
     }
 

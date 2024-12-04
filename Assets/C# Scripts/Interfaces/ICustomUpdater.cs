@@ -4,7 +4,7 @@ using Unity.Burst;
 using UnityEngine;
 
 
-public interface IInteractableUpdater
+public interface ICustomUpdater
 {
     public bool requireUpdate { get; }
 

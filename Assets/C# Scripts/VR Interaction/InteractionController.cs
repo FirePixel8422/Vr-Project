@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 [BurstCompile]
 public class InteractionController : MonoBehaviour
 {
-    private Hand hand;
+    [HideInInspector]
+    public Hand hand;
+
     public HandInteractionSettingsSO settings;
 
 

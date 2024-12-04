@@ -22,6 +22,8 @@ public class BowlingController : InteractableButton
         base.Start();
 
         spawnPositions = new Vector3[bowlingPawnSpawnpoints.Length];
+        bowlingPawns = new Transform[bowlingPawnSpawnpoints.Length];
+
         for (int i = 0; i < bowlingPawnSpawnpoints.Length; i++)
         {
             spawnPositions[i] = bowlingPawnSpawnpoints[i].position;
@@ -35,6 +37,8 @@ public class BowlingController : InteractableButton
 
     public override void Pickup(InteractionController hand)
     {
+        base.Pickup(hand);
+
         ResetBowlingPawns();
     }
 
