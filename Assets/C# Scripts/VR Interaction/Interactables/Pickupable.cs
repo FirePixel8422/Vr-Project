@@ -8,9 +8,13 @@ using UnityEngine;
 
 public enum PickupRotationMode : byte
 {
-    Custom,
     SnapToHand,
     KeepWorldRotation,
+}
+public enum PickupPositionMode : byte
+{
+    SnapToHand,
+    KeepRelativePosition,
 }
 
 
@@ -18,9 +22,11 @@ public enum PickupRotationMode : byte
 [BurstCompile]
 public class Pickupable : Interactable
 {
-
     public PickupRotationMode pickupRotationMode = PickupRotationMode.KeepWorldRotation;
 
+    public PickupPositionMode pickupPositionMode = PickupPositionMode.KeepRelativePosition;
+
+    [Header("How hard can you throw this object")]
     public float throwVelocityMultiplier = 1;
 
     [Header("Max velocity on each axis (direction is kept)")]
@@ -29,8 +35,12 @@ public class Pickupable : Interactable
     [Header("Release object with 0 velocity of released with less then minRequiredVelocity")]
     public float minRequiredVelocityXYZ = 0.065f;
 
+    [Header("How heavy against fracturable objects")]
+    public float weight = 1;
 
     private Rigidbody rb;
+
+
 
 
     [BurstCompile]
@@ -46,7 +56,10 @@ public class Pickupable : Interactable
     {
         base.Pickup(hand);
 
-        transform.SetParent(hand.heldItemHolder, false, pickupRotationMode == PickupRotationMode.KeepWorldRotation);
+        bool keepWorldRotation = pickupRotationMode == PickupRotationMode.KeepWorldRotation;
+        bool keepPositionOffsetTohand = pickupPositionMode == PickupPositionMode.KeepRelativePosition;
+
+        transform.SetParent(hand.heldItemHolder, keepPositionOffsetTohand, keepWorldRotation);
         rb.isKinematic = true;
     }
 
@@ -93,7 +106,7 @@ public class Pickupable : Interactable
 
 
 
-
+#if UNITY_EDITOR
     public bool debugRBCenterOfMass;
 
     protected override void OnDrawGizmos()
@@ -112,4 +125,5 @@ public class Pickupable : Interactable
             Gizmos.DrawSphere(transform.TransformPoint(rb.centerOfMass), 0.03f); // Visualize center of mass
         }
     }
+#endif
 }

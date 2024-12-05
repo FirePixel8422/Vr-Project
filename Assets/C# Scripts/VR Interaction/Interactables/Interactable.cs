@@ -19,7 +19,6 @@ public class Interactable : MonoBehaviour
     public bool heldByPlayer;
 
     public float objectSize;
-    public float weight = 1;
 
 
 

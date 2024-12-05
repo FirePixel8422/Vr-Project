@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 
 public static class ExtensionMethods
 {
+    #region Invoke
+
     /// <summary>
     /// Call function after a delay
     /// </summary>
@@ -35,6 +36,10 @@ public static class ExtensionMethods
         f(param);
     }
 
+    #endregion
+
+
+    #region SetParent
 
     public static void SetParent(this Transform trans, Transform parent, bool keepLocalPos, bool keepLocalRot)
     {
@@ -77,28 +82,32 @@ public static class ExtensionMethods
         }
     }
 
+    #endregion
 
-    #region Try GetComponent(s)
 
-    public static bool TryGetComponentInChild<T>(this Transform trans, out T component) where T : Component
+    #region maybe cleaner null check
+
+    public static bool IsNotNull<T>(this T component)
     {
-        component = trans.GetComponentInChildren<T>();
         return component != null;
     }
+    public static bool IsNull<T>(this T component)
+    {
+        return component == null;
+    }
 
-    public static bool TryGetComponentInChild<T>(this Transform trans, out T component, bool includeInactive) where T : Component
+    #endregion
+
+
+    #region TryGetComponent(s)
+
+    public static bool TryGetComponentInChildren<T>(this Transform trans, out T component, bool includeInactive = false) where T : Component
     {
         component = trans.GetComponentInChildren<T>(includeInactive);
         return component != null;
     }
 
-    public static bool TryGetComponentsInChildren<T>(this Transform trans, out T[] components) where T : Component
-    {
-        components = trans.GetComponentsInChildren<T>();
-
-        return components.Length > 0;
-    }
-    public static bool TryGetComponentsInChildren<T>(this Transform trans, out T[] components, bool includeInactive) where T : Component
+    public static bool TryGetComponentsInChildren<T>(this Transform trans, out T[] components, bool includeInactive = false) where T : Component
     {
         components = trans.GetComponentsInChildren<T>(includeInactive);
 
@@ -107,17 +116,17 @@ public static class ExtensionMethods
 
     public static bool TryGetComponentInParent<T>(this Transform trans, out T component) where T : Component
     {
-        component = trans.transform.parent.GetComponent<T>();
+        component = trans.GetComponentInParent<T>();
         return component != null;
     }
 
-    public static bool TryFindObjectOfType<T>(this Transform trans, out T component) where T : Component
+    public static bool TryGetComponentsInParent<T>(this Transform trans, out T[] component) where T : Component
     {
-        component = UnityEngine.Object.FindObjectOfType<T>();
+        component = trans.GetComponentsInParent<T>();
         return component != null;
     }
 
-    public static bool TryFindObjectOfType<T>(this Transform trans, out T component, bool includeInactive) where T : Component
+    public static bool TryFindObjectOfType<T>(this UnityEngine.Object obj, out T component, bool includeInactive = false) where T : Component
     {
         component = UnityEngine.Object.FindObjectOfType<T>(includeInactive);
         return component != null;
@@ -125,7 +134,28 @@ public static class ExtensionMethods
 
     #endregion
 
+
+    #region HasComponent
+
+    public static bool HasComponent<T>(this Transform trans) where T : Component
+    {
+        return trans.GetComponent<T>() != null;
+    }
+
+    public static bool HasComponentInChildren<T>(this Transform trans, bool includeInactive = false) where T : Component
+    {
+        return trans.GetComponentInChildren<T>(includeInactive) != null;
+    }
+
+    public static bool HasComponentInParent<T>(this Transform trans, bool includeInactive = false) where T : Component
+    {
+        return trans.GetComponentInParent<T>(includeInactive) != null;
+    }
+
+    #endregion
 }
+
+
 public static class VectorLogic
 {
     /// <summary>
@@ -157,9 +187,9 @@ public static class VectorLogic
 
     public static Vector3 Clamp(this Vector3 value, Vector3 min, Vector3 max)
     {
-        value.x = Mathf.Clamp(value.x, min.x, max.x);
-        value.y = Mathf.Clamp(value.y, min.y, max.y);
-        value.z = Mathf.Clamp(value.z, min.z, max.z);
+        value.x = math.clamp(value.x, min.x, max.x);
+        value.y = math.clamp(value.y, min.y, max.y);
+        value.z = math.clamp(value.z, min.z, max.z);
 
         return value;
     }
@@ -168,14 +198,62 @@ public static class VectorLogic
     public static Vector3 ClampDirection(this Vector3 value, Vector3 clamp)
     {
         // Calculate the scale factors for each axis
-        float scaleX = Mathf.Abs(value.x) > clamp.x ? Mathf.Abs(clamp.x / value.x) : 1f;
-        float scaleY = Mathf.Abs(value.y) > clamp.y ? Mathf.Abs(clamp.y / value.y) : 1f;
-        float scaleZ = Mathf.Abs(value.z) > clamp.z ? Mathf.Abs(clamp.z / value.z) : 1f;
+        float scaleX = math.abs(value.x) > clamp.x ? math.abs(clamp.x / value.x) : 1f;
+        float scaleY = math.abs(value.y) > clamp.y ? math.abs(clamp.y / value.y) : 1f;
+        float scaleZ = math.abs(value.z) > clamp.z ? math.abs(clamp.z / value.z) : 1f;
 
         // Use the smallest scale factor to preserve direction
-        float scale = Mathf.Min(scaleX, Mathf.Min(scaleY, scaleZ));
+        float scale = math.min(scaleX, math.min(scaleY, scaleZ));
 
         // Scale the vector uniformly
         return value * scale;
+    }
+}
+
+
+public static class Random
+{
+    [ThreadStatic]
+    private static Unity.Mathematics.Random random;
+
+
+    // Initialize the random instance
+    static Random()
+    {
+        // Generate a seed for the random using the current time
+        random = new Unity.Mathematics.Random((uint)System.DateTime.Now.Ticks);
+    }
+
+
+    public static void ReSeed()
+    {
+        random = new Unity.Mathematics.Random((uint)System.DateTime.Now.Ticks);
+    }
+    public static void ReSeed(uint seed)
+    {
+        random = new Unity.Mathematics.Random(seed);
+    }
+
+
+    public static int Range(int min, int max)
+    {
+        EnsureInitialized();
+
+        return random.NextInt(min, max);
+    }
+
+    public static float Range(float min, float max)
+    {
+        EnsureInitialized();
+
+        return random.NextFloat(min, max);
+    }
+
+    private static void EnsureInitialized()
+    {
+        if (random.Equals(default(Unity.Mathematics.Random)))
+        {
+            ReSeed();
+        }
     }
 }

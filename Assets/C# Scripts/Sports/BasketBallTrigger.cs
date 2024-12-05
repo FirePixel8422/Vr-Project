@@ -15,7 +15,7 @@ public class BasketBallTrigger : MonoBehaviour
 
     private void Start()
     {
-        confetti.transform.parent = null;
+        
         transform.parent.GetComponent<Rigidbody>().sleepThreshold = 0.00001f;
     }
 
@@ -42,7 +42,7 @@ public class BasketBallTrigger : MonoBehaviour
             Hand.Left.SendVibration(vibrationParams);
             Hand.Right.SendVibration(vibrationParams);
 
-            confetti.transform.position = transform.position;
+            confetti.transform.parent = null;
             confetti.Play();
 
             Destroy(transform.parent.gameObject);
