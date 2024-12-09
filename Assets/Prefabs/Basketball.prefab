@@ -284,15 +284,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76553a290004c734fbdceb11e70502de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectedHand: {fileID: 0}
   interactable: 1
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0.1225
-  weight: 1
-  pickupRotationMode: 2
+  pickupRotationMode: 1
+  pickupPositionMode: 0
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 10, y: 10, z: 10}
   minRequiredVelocityXYZ: 0.065
+  weight: 1
   debugRBCenterOfMass: 0
 --- !u!1001 &9062022376189945862
 PrefabInstance:

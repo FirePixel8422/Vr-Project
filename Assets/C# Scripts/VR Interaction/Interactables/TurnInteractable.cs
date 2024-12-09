@@ -24,6 +24,7 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
 
     public bool snapPlayerHandToTransform;
     public Transform snapTransform;
+    public Quaternion handRotOffset;
 
     public float interactionRange;
 
@@ -102,7 +103,12 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
         }
         else
         {
-            connectedHand.hand.vrHandAnimator.UpdateHandTransform(snapTransform.position, snapTransform.rotation);
+            Quaternion targetRot = snapTransform.rotation;
+            if (connectedHand.hand.isLeftHand)
+            {
+                targetRot *= handRotOffset;
+            }
+            connectedHand.hand.vrHandAnimator.UpdateHandTransform(snapTransform.position, targetRot);
         }
     }
 

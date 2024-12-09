@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2920023017032558030}
   - component: {fileID: 8210165662067845605}
   - component: {fileID: 161221903450447147}
-  - component: {fileID: 9142038566177350492}
   m_Layer: 6
   m_Name: Pot
   m_TagString: Untagged
@@ -80,11 +79,12 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  weight: 1
-  pickupRotationMode: 2
+  pickupRotationMode: 1
+  pickupPositionMode: 1
   throwVelocityMultiplier: 1
   velocityClamp: {x: 8, y: 8, z: 8}
   minRequiredVelocityXYZ: 0.065
+  weight: 1
   debugRBCenterOfMass: 0
 --- !u!64 &161221903450447147
 MeshCollider:
@@ -108,27 +108,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: c9307b4b2aa249b4fbdb1b794da828d2, type: 3}
---- !u!135 &9142038566177350492
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999733466267013000}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.32
-  m_Center: {x: 0, y: 0.1, z: 0}
 --- !u!1 &5696676886488849684
 GameObject:
   m_ObjectHideFlags: 0

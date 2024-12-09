@@ -32,6 +32,10 @@ public class Hand : MonoBehaviour
 
     #endregion
 
+    public bool isLeftHand => handType == HandType.Left;
+    public bool isRightHand => handType == HandType.Right;
+
+
     public InteractionController interactionController;
     public VRHandAnimator vrHandAnimator;
 
