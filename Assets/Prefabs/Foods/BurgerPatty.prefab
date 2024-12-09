@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -22.558
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0127
+      value: 0.875
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.8396
+      value: 1.737
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -54,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0a6cf67da08c3bd46a789d51fdf6b52a, type: 2}
     - target: {fileID: 919132149155446097, guid: 4f6f2ff6c37b3004a9b5a221de8be26c, type: 3}
       propertyPath: m_Name
-      value: BurgerPatty 1
+      value: BurgerPatty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

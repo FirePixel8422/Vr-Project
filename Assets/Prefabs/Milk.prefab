@@ -9,16 +9,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.1818032
+      value: -20.963411
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.998
+      value: 0.00000023841858
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.919
+      value: 3.7774262
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9bcb703a8f18a1740bd135d19f4094d0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -187,13 +199,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectedHand: {fileID: 0}
   interactable: 1
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  weight: 1
   pickupRotationMode: 2
+  pickupPositionMode: 1
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 6, y: 6, z: 6}
   minRequiredVelocityXYZ: 0.065
+  weight: 1
   debugRBCenterOfMass: 0

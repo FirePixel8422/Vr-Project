@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.5325129
+      value: -23.247526
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.764
+      value: 0.00000011920929
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.691
+      value: 3.9038734
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -161,11 +161,12 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  weight: 1
   pickupRotationMode: 2
+  pickupPositionMode: 1
   throwVelocityMultiplier: 0.8
   velocityClamp: {x: 3, y: 3, z: 3}
   minRequiredVelocityXYZ: 0.065
+  weight: 1
   debugRBCenterOfMass: 0
 --- !u!64 &4906170314658918306
 MeshCollider:
