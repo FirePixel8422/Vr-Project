@@ -22,11 +22,11 @@ public class FoodManager : MonoBehaviour
 
 
 
-    public bool TryMakeFood(NativeList<FoodType> foods, Applience targetApplience, out Food madeFood)
+    public bool TryMakeFood(FoodType[] foods, Applience targetApplience, out Food madeFood)
     {
         madeFood = null;
 
-        Recipe attemptedRecipe = new Recipe(foods.AsArray().ToArray(), targetApplience);
+        Recipe attemptedRecipe = new Recipe(foods, targetApplience);
 
 
         for (int i = 0; i < recipesList.Length; i++)

@@ -44,7 +44,7 @@ public class Tester : MonoBehaviour
         if (trigger)
         {
             trigger = false;
-            print("Try Make Food State: " + FoodManager.Instance.TryMakeFood(foodTypes, applience.applience, out Food madeFood) + ", Made: " + madeFood.foodType.foodName);
+            print("Try Make Food State: " + FoodManager.Instance.TryMakeFood(foodTypes.AsArray().ToArray(), applience.applience, out Food madeFood) + ", Made: " + madeFood.foodType.foodName);
         }
     }
 }

@@ -22,7 +22,7 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
         localPos = transform.localPosition;
         localRot = transform.localRotation;
 
-        InteractableUpdateManager.AddUpdater(this);
+        CustomUpdaterManager.AddUpdater(this);
     }
 
     public void OnBigTriggerStateChange(InputAction.CallbackContext ctx)

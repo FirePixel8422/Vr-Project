@@ -38,7 +38,7 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
 
     private void Start()
     {
-        InteractableUpdateManager.AddUpdater(this);
+        CustomUpdaterManager.AddUpdater(this);
     }
 
 

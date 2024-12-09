@@ -6,6 +6,7 @@ using UnityEngine;
 [BurstCompile]
 public class FragmentController : MonoBehaviour
 {
+    [SerializeField] private bool shatterableByForce;
     [SerializeField] private float fractureThreshold;
 
     [SerializeField] private FragmentScalar shatterObj;
@@ -22,6 +23,11 @@ public class FragmentController : MonoBehaviour
     [BurstCompile]
     private void OnCollisionEnter(Collision collision)
     {
+        if (shatterableByForce == false)
+        {
+            return;
+        }
+
         if (collision.transform.HasComponent<Pickupable>())
         {
             float3 vel = collision.rigidbody.velocity;
