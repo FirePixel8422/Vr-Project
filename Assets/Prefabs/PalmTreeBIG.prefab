@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a7e1fb23b5cacf64f8abbabb67a77657, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 316.45288
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7e1fb23b5cacf64f8abbabb67a77657, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 17.0075
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7e1fb23b5cacf64f8abbabb67a77657, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -9.955155
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a7e1fb23b5cacf64f8abbabb67a77657, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a7e1fb23b5cacf64f8abbabb67a77657, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fc0d0b9370b21c941a63ff149b7ab47e, type: 2}
+      objectReference: {fileID: 2100000, guid: c15214bb9ee61f4489ce45b84d7974a0, type: 2}
     - target: {fileID: 919132149155446097, guid: a7e1fb23b5cacf64f8abbabb67a77657, type: 3}
       propertyPath: m_Name
       value: PalmTreeBIG
