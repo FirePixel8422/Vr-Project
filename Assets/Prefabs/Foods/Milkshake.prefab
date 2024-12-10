@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.247526
+      value: -4.839508
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000011920929
+      value: 0.632
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9038734
+      value: -7.6516953
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_LocalRotation.y
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4142eaf8ed5ce1d438b60f2b0c37a2f4, type: 2}
+      objectReference: {fileID: 2100000, guid: 478d31b10cc267d4c845eb908b44ccba, type: 2}
     - target: {fileID: 919132149155446097, guid: 83aee4d5d0aa33544b296ee95c1b70f5, type: 3}
       propertyPath: m_Name
       value: Milkshake
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d0d9034500ecb4d8a63946d820f766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: {fileID: 0}
+  foodType: {fileID: 11400000, guid: eeb6ce6205a7eb047a3e0ac3182f3588, type: 2}
   requiredRecipe:
     requiredFood:
     - {fileID: 11400000, guid: 8ab74490b4d62b2489b187068532c710, type: 2}
@@ -117,6 +117,14 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 01dc9677b83162b42a19e2e62325e03e, type: 2}
     requiredApplience: {fileID: 11400000, guid: 3070fd38c4c95a14e83bf58b4fccf315, type: 2}
     foodIndex: 0
+  minCookTemp: 60
+  startBurningTemp: 130
+  endBurningTemp: 150
+  turnToDustTemp: 160
+  isCookable: 0
+  cookSpeed: 1
+  cookPercentage: 0
+  cookedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!54 &2930698227590818153
 Rigidbody:
   m_ObjectHideFlags: 0

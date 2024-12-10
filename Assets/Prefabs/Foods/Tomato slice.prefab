@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.716053
+      value: 315.8221
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 17.5691
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.248358
+      value: -16.9634
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5f9a84ee488e4fd4b938d4885eecfb04, type: 2}
     - target: {fileID: 919132149155446097, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
       propertyPath: m_Name
       value: Tomato slice
