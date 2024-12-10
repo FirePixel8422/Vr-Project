@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c51f05c20af968c46b99e94d9c5e5685, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.655046
+      value: 16.32524
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c51f05c20af968c46b99e94d9c5e5685, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 3.0034428
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c51f05c20af968c46b99e94d9c5e5685, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0142803
+      value: 25.3929
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c51f05c20af968c46b99e94d9c5e5685, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c51f05c20af968c46b99e94d9c5e5685, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 94c4a59008abe374095c38e6bc944639, type: 2}
+      objectReference: {fileID: 2100000, guid: 493fa2176406f324087dd41ab8f51d9a, type: 2}
     - target: {fileID: 919132149155446097, guid: c51f05c20af968c46b99e94d9c5e5685, type: 3}
       propertyPath: m_Name
       value: Tafel Rond

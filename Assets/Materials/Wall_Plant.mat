@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wall_Plant
-  m_Shader: {fileID: -6465566751694194690, guid: c340f0bba3ec9ef4b9a168aeb811f6a2, type: 3}
-  m_Parent: {fileID: 2100000, guid: b7e1afcb6f6d9e346b1953d6d07ab5a3, type: 2}
+  m_Shader: {fileID: -6465566751694194690, guid: b3677915dd7a03447b1450ec8918c568, type: 3}
+  m_Parent: {fileID: 2100000, guid: 0206ce948b84ab8469cfd9aa427828a6, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []

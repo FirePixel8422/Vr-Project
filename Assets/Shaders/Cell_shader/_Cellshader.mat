@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chair_Cellshader
+  m_Name: _Cellshader
   m_Shader: {fileID: -6465566751694194690, guid: b3677915dd7a03447b1450ec8918c568, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -63,6 +63,6 @@ Material:
     - _ToonRampOffsetPoint: 0.62
     - _ToonRampSmoothness: 0.7
     m_Colors:
-    - _Color: {r: 0.1509434, g: 0.025794195, b: 0.012103953, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
     - _ToonRampTinting: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

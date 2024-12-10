@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 8d80af34c591c51499782d9b96cc7485, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0f887713e5ad14e40870571904a2fe06, type: 2}
+      objectReference: {fileID: 2100000, guid: ccbdda0a0cdb3b74fbe8c6189665a5b9, type: 2}
     - target: {fileID: 919132149155446097, guid: 8d80af34c591c51499782d9b96cc7485, type: 3}
       propertyPath: m_Name
       value: woodPlank
