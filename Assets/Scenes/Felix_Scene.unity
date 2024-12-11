@@ -1026,6 +1026,63 @@ MonoBehaviour:
   cookSpeed: 1
   cookPercentage: 0
   cookedColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1001 &837859051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 33.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9739223
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.21528721
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0154545745
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.06991384
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -24.657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -3.798
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636180682264715834, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 9.042
+      objectReference: {fileID: 0}
+    - target: {fileID: 8976290051974166656, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
+      propertyPath: m_Name
+      value: Parasol (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f23587d1b5c9f6c40b4731a7851afad3, type: 3}
 --- !u!1001 &853200892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,6 +2593,7 @@ SceneRoots:
   - {fileID: 1538288900}
   - {fileID: 8062492479125258501}
   - {fileID: 312219572207793334}
+  - {fileID: 837859051}
   - {fileID: 3545142201914416827}
   - {fileID: 337367771}
   - {fileID: 95322014}
