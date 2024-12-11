@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 
 [BurstCompile]
-public class InteractionController : MonoBehaviour
+public class InteractionController : MonoBehaviour, ICustomUpdater
 {
     [HideInInspector]
     public Hand hand;
@@ -20,6 +20,8 @@ public class InteractionController : MonoBehaviour
     private Transform overlapSphereTransform;
 
     public Transform heldItemHolder;
+    private Vector3 heldItemHolderPos;
+    private Vector3 heldItemHolderRot;
 
 
     private Interactable heldObject;
@@ -54,6 +56,9 @@ public class InteractionController : MonoBehaviour
     {
         hand = GetComponent<Hand>();
 
+        heldItemHolderPos = heldItemHolder.localPosition;
+        heldItemHolderRot = heldItemHolder.localEulerAngles;
+
         hitObjectsInSphere = new Collider[settings.maxExpectedObjectInSphere];
 
 
@@ -64,13 +69,21 @@ public class InteractionController : MonoBehaviour
 
         savedLocalVelocity = new Vector3[frameAmount];
         savedAngularVelocity = new Vector3[frameAmount];
+
+        CustomUpdaterManager.AddUpdater(this);
+    }
+
+    public void SetItemHolderPosition(Vector3 posOffset, Vector3 rotOffset)
+    {
+        heldItemHolder.SetLocalPositionAndRotation(heldItemHolderPos + posOffset, hand.isLeftHand ? Quaternion.Euler(heldItemHolderRot + rotOffset) : Quaternion.Euler(heldItemHolderRot - rotOffset));
     }
 
 
 
+    public bool requireUpdate => true;
 
     [BurstCompile]
-    private void Update()
+    public void OnUpdate()
     {
         //if you are holding nothing, scan for objects by using a raycast and a sphere around you hand
         if (isHoldingObject == false)
@@ -151,20 +164,20 @@ public class InteractionController : MonoBehaviour
         {
             float closestObjectDistance = 10000;
             Interactable new_ToPickupObject = null;
-            Interactable targetObject;
 
 
             //calculate closest object
             for (int i = 0; i < objectsInSphereCount; i++)
             {
-                targetObject = hitObjectsInSphere[i].GetComponent<Interactable>();
-
-                float distanceToTargetObject = Vector3.Distance(overlapSphereTransformPos, targetObject.transform.position);
-
-                if (distanceToTargetObject - targetObject.objectSize < closestObjectDistance)
+                if (hitObjectsInSphere[i].TryGetComponent(out Interactable targetObject))
                 {
-                    new_ToPickupObject = targetObject;
-                    closestObjectDistance = distanceToTargetObject;
+                    float distanceToTargetObject = Vector3.Distance(overlapSphereTransformPos, targetObject.transform.position);
+
+                    if (distanceToTargetObject - targetObject.objectSize < closestObjectDistance)
+                    {
+                        new_ToPickupObject = targetObject;
+                        closestObjectDistance = distanceToTargetObject;
+                    }
                 }
             }
 
@@ -304,11 +317,13 @@ public class InteractionController : MonoBehaviour
     private Vector3 prevTransformPos;
     private Vector3[] savedLocalVelocity;
 
-    private Quaternion lastRotation;
+    private Quaternion prevRotation;
     private Vector3[] savedAngularVelocity;
 
+    [Range(1, 32)]
     public int frameAmount;
     private int frameIndex;
+
 
 
     [BurstCompile]
@@ -330,13 +345,13 @@ public class InteractionController : MonoBehaviour
 
 
         //Calculate Angular velocity based on hand rotation
-        Quaternion deltaRotation = transform.rotation * Quaternion.Inverse(lastRotation);
+        Quaternion deltaRotation = transform.rotation * Quaternion.Inverse(prevRotation);
         deltaRotation.ToAngleAxis(out float angle, out Vector3 axis);
 
         if (angle > 180f) angle -= 360f;
         savedAngularVelocity[frameIndex] = axis * (angle * Mathf.Deg2Rad / Time.deltaTime);
 
-        lastRotation = transform.rotation;
+        prevRotation = transform.rotation;
 
 
 

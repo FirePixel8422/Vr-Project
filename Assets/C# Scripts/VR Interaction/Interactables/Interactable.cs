@@ -11,7 +11,7 @@ using UnityEngine;
 [BurstCompile]
 public class Interactable : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public InteractionController connectedHand;
 
     public bool interactable = true;
