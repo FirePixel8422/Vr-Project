@@ -10,19 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.755
+      value: 5.741
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.982
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.228
+      value: -8.172
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000003010034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -81,10 +81,10 @@ PrefabInstance:
       addedObject: {fileID: 9003069902430124586}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4519846321994125151}
+      addedObject: {fileID: 3944754784694532724}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3944754784694532724}
+      addedObject: {fileID: 6206806924985722969}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5351038700023718420}
@@ -102,10 +102,10 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7435328767028195797}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_CenterOfMass: {x: 0, y: 0, z: 0.365}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
@@ -114,14 +114,36 @@ Rigidbody:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_ImplicitCom: 1
+  m_ImplicitCom: 0
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!64 &4519846321994125151
+--- !u!64 &3944754784694532724
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7435328767028195797}
+  m_Material: {fileID: 13400000, guid: 1f7e7e515fd34e54786275827726013b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: -1
+  m_Mesh: {fileID: 2534964839176971238, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
+--- !u!64 &6206806924985722969
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,28 +165,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7387706064836869012, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
---- !u!64 &3944754784694532724
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7435328767028195797}
-  m_Material: {fileID: 13400000, guid: 1f7e7e515fd34e54786275827726013b, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2534964839176971238, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
 --- !u!114 &5351038700023718420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +182,10 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  pickupRotationMode: 1
+  pickupRotationMode: 0
+  pickupPosOffset: {x: 0, y: 0, z: 0}
   pickupPositionMode: 0
+  pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 1
   velocityClamp: {x: 8, y: 8, z: 8}
   minRequiredVelocityXYZ: 0.065
@@ -194,6 +196,12 @@ MonoBehaviour:
   temparature: 0
   minTemp: 25
   maxTemp: 160
-  onGasPitAmount: 0
-  upsideDownThreshold: 0.3
+  glideForce: 6
+  IsOnGasPitAmount: 0
   foodList: []
+  prevPos: {x: 0, y: 0, z: 0}
+  savedVelocity: {x: 0, y: 0, z: 0}
+  prevRot: {x: 0, y: 0, z: 0, w: 0}
+  savedAngularVelocity: {x: 0, y: 0, z: 0}
+  foodThrowMultiplier: 1000
+  frameAmount: 1

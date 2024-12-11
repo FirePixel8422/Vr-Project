@@ -104,10 +104,10 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
         else
         {
             Quaternion targetRot = snapTransform.rotation;
-            if (connectedHand.hand.isLeftHand)
-            {
-                targetRot *= handRotOffset;
-            }
+            //if (connectedHand.hand.isLeftHand)
+            //{
+            //    targetRot *= handRotOffset;
+            //}
             connectedHand.hand.vrHandAnimator.UpdateHandTransform(snapTransform.position, targetRot);
         }
     }

@@ -85,20 +85,6 @@ public static class ExtensionMethods
     #endregion
 
 
-    #region maybe cleaner null check
-
-    public static bool IsNotNull<T>(this T component)
-    {
-        return component != null;
-    }
-    public static bool IsNull<T>(this T component)
-    {
-        return component == null;
-    }
-
-    #endregion
-
-
     #region TryGetComponent(s)
 
     public static bool TryGetComponentInChildren<T>(this Transform trans, out T component, bool includeInactive = false) where T : Component

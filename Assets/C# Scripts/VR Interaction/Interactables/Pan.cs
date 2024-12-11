@@ -1,30 +1,33 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections;
+using System.Linq;
+using TMPro;
+using Unity.Burst;
 using Unity.Mathematics;
 using UnityEngine;
 
+
+
+[BurstCompile]
 public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
 {
     [Header("Pan Settings")]
 
-    public float heatUpTime = 45;
-    public float coolDownTime = 60;
+    [SerializeField] private float heatUpTime = 45;
+    [SerializeField] private float coolDownTime = 60;
 
-    public float temparature;
-    public float minTemp = 25, maxTemp = 160;
-
-    public bool onGasPit => onGasPitAmount > 0;
-
-    public bool requireUpdate_10FPS => onGasPit || foodList.Count != 0;
-
-    public int onGasPitAmount;
-
-    [Range(0, 1)]
-    public float upsideDownThreshold;
+    [SerializeField] private float temparature;
+    [SerializeField] private float minTemp = 25, maxTemp = 160;
 
 
-    public List<Food> foodList;
+
+    [SerializeField] private int IsOnGasPitAmount;
+    private bool IsOnGasPit => IsOnGasPitAmount > 0;
+
+
+    [SerializeField] private Transform[] burgerPoints;
+    [SerializeField] private List<Food> foodList = new List<Food>();
+
+
 
 
     private void Start()
@@ -33,76 +36,150 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
     }
 
 
-
-
-    private void OnTriggerEnter(Collider other)
+    public override void Pickup(InteractionController hand)
     {
-        if (other.TryGetComponent(out ApplienceObject applience) && applience.applience.applienceName == "GasBurner")
+        if (connectedHand != null)
         {
-            onGasPitAmount += 1;
+            connectedHand.isHoldingObject = false;
         }
 
-        if (other.TryGetComponent(out Food food) && food.isCookable)
+        connectedHand = hand;
+        heldByPlayer = true;
+
+
+        TogglePhysics(false, true);
+
+        bool keepWorldRotation = pickupRotationMode == PickupRotationMode.KeepWorldRotation;
+        bool keepPositionOffsetTohand = pickupPositionMode == PickupPositionMode.KeepRelativePosition;
+
+        transform.SetParent(hand.heldItemHolder, keepPositionOffsetTohand, keepWorldRotation);
+
+        connectedHand.SetItemHolderPosition(pickupPosOffset, pickUpRotOffset);
+
+
+        if (pickupPosOffset != Vector3.zero)
         {
-            food.transform.SetParent(transform, true);
-            food.TogglePhysics(false);
+            transform.localPosition += pickupPosOffset;
+        }
+        if (pickUpRotOffset != Vector3.zero)
+        {
+            transform.localRotation *= Quaternion.Euler(pickUpRotOffset);
+        }
+
+        rb.isKinematic = true;
+    }
+
+
+
+    #region Detect Food Enter and Exit Pan and Pan Enter and Exit on Stove
+
+    private void OnCollisionEnter(Collision other)
+    {
+        //check for Stove
+        if (other.transform.TryGetComponent(out ApplienceObject applience) && applience.applience.applienceName == "GasBurner")
+        {
+            IsOnGasPitAmount += 1;
+        }
+
+        //get food if not already full
+        else if (burgerPoints.Length != foodList.Count && other.transform.TryGetComponent(out Food food) && foodList.Contains(food) == false && food.isCookable)
+        {
+            food.transform.SetParent(burgerPoints[foodList.Count], false, false);
+
+            food.TogglePhysics(false, true);
+
+            if (food.connectedHand != null)
+            {
+                food.connectedHand.isHoldingObject = false;
+            }
+
+            food.interactable = false;
 
             foodList.Add(food);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+
+
+    private void OnCollisionExit(Collision other)
     {
-        if (other.TryGetComponent(out ApplienceObject applience) && applience.applience.applienceName == "GasBurner")
+        //check for Stove
+        if (other.transform.TryGetComponent(out ApplienceObject applience) && applience.applience.applienceName == "GasBurner")
         {
-            onGasPitAmount -= 1;
+            IsOnGasPitAmount -= 1;
         }
 
-        if (other.TryGetComponent(out Food food) && foodList.Contains(food))
+        //remove food
+        else if (other.transform.TryGetComponent(out Food food) && foodList.Contains(food))
         {
             food.transform.parent = null;
+
             food.TogglePhysics(true);
+
+            food.interactable = true;
 
             foodList.Remove(food);
         }
     }
 
+    #endregion
 
+
+
+
+    //only update if the Pan is on a gasPit, is not on a gaspit and still needs to cool down or has food in it
+    public bool requireUpdate_10FPS => IsOnGasPit || temparature > minTemp || foodList.Count != 0;
+
+
+    [BurstCompile]
     public void OnIntervalUpdate_10FPS(float deltaTime)
     {
-        if (Vector3.Dot(transform.up, Vector3.down) < upsideDownThreshold)
-        {
-            for (int i = 0; i < foodList.Count; i++)
-            {
-                if (foodList[i] == null)
-                {
-                    foodList.RemoveAt(i);
-                    i--;
-                    continue;
-                }
-
-                foodList[i].transform.parent = null;
-                foodList[i].TogglePhysics(true);
-
-                foodList.Remove(foodList[i]);
-            }
-        }
-
+        //all food inside of the pan
         for (int i = 0; i < foodList.Count; i++)
         {
+            if (foodList[i] == null || foodList[i].interactable)
+            {
+                foodList.RemoveAt(i);
+                i--;
+                continue;
+            }
+
+
+            //cook food 
             if (temparature > foodList[i].minCookTemp)
             {
                 foodList[i].Cook(deltaTime * (temparature / maxTemp));
             }
         }
 
-        if (onGasPit)
+
+        //heat up / cooldown thepan
+        if (IsOnGasPit)
         {
             temparature = math.clamp(temparature + deltaTime * (maxTemp / heatUpTime), minTemp, maxTemp);
         }
         else
         {
             temparature = math.clamp(temparature - deltaTime * (maxTemp / coolDownTime), minTemp, maxTemp);
+        }
+    }
+
+
+
+    private void OnValidate()
+    {
+        if (pickupPositionMode != PickupPositionMode.SnapToHand)
+        {
+            pickupPositionMode = PickupPositionMode.SnapToHand;
+
+            Debug.LogWarning("Pan Requires Snap To Hand PickUpPositionMode");
+        }
+
+        if (pickupRotationMode != PickupRotationMode.SnapToHand)
+        {
+            pickupRotationMode = PickupRotationMode.SnapToHand;
+
+            Debug.LogWarning("Pan Requires Snap To Hand PickUpRotationMode");
         }
     }
 }

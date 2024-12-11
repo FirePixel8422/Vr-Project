@@ -22,9 +22,13 @@ public enum PickupPositionMode : byte
 [BurstCompile]
 public class Pickupable : Interactable
 {
-    public PickupRotationMode pickupRotationMode = PickupRotationMode.KeepWorldRotation;
+    [Header("Pickup Settings")]
+    [SerializeField] protected PickupRotationMode pickupRotationMode = PickupRotationMode.KeepWorldRotation;
+    [SerializeField] protected Vector3 pickupPosOffset;
 
-    public PickupPositionMode pickupPositionMode = PickupPositionMode.KeepRelativePosition;
+    [SerializeField] protected PickupPositionMode pickupPositionMode = PickupPositionMode.KeepRelativePosition;
+    [SerializeField] protected Vector3 pickUpRotOffset;
+
 
     [Header("How hard can you throw this object")]
     public float throwVelocityMultiplier = 1;
@@ -38,8 +42,11 @@ public class Pickupable : Interactable
     [Header("How heavy against fracturable objects")]
     public float weight = 1;
 
-    private Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
 
+    [HideInInspector]
+    public Collider[] colliders;
 
 
 
@@ -47,6 +54,7 @@ public class Pickupable : Interactable
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        colliders = GetComponents<Collider>();
     }
 
 
@@ -56,10 +64,25 @@ public class Pickupable : Interactable
     {
         base.Pickup(hand);
 
+        TogglePhysics(false);
+
         bool keepWorldRotation = pickupRotationMode == PickupRotationMode.KeepWorldRotation;
         bool keepPositionOffsetTohand = pickupPositionMode == PickupPositionMode.KeepRelativePosition;
 
         transform.SetParent(hand.heldItemHolder, keepPositionOffsetTohand, keepWorldRotation);
+
+        connectedHand.SetItemHolderPosition(pickupPosOffset, pickUpRotOffset);
+
+
+        if (pickupPosOffset != Vector3.zero)
+        {
+            transform.localPosition += pickupPosOffset;
+        }
+        if (pickUpRotOffset != Vector3.zero)
+        {
+            transform.localRotation *= Quaternion.Euler(pickUpRotOffset);
+        }
+
         rb.isKinematic = true;
     }
 
@@ -68,6 +91,8 @@ public class Pickupable : Interactable
     public override void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
         base.Throw(velocity, angularVelocity);
+
+        TogglePhysics(true);
 
         transform.parent = null;
 
@@ -98,11 +123,26 @@ public class Pickupable : Interactable
     {
         base.Drop();
 
+        TogglePhysics(true);
+
         transform.parent = null;
 
         rb.isKinematic = false;
     }
 
+
+    public void TogglePhysics(bool state, bool keepColliders = false)
+    {
+        if (keepColliders == false)
+        {
+            foreach (Collider coll in colliders)
+            {
+                coll.enabled = state;
+            }
+        }
+
+        rb.constraints = state ? RigidbodyConstraints.None : RigidbodyConstraints.FreezeAll;
+    }
 
 
 

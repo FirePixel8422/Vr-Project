@@ -5,35 +5,30 @@ using UnityEngine;
 
 
 [BurstCompile]
-public class Food : MonoBehaviour
+public class Food : Pickupable
 {
     public FoodSO foodType;
 
     public Recipe requiredRecipe;
 
     public float minCookTemp = 60;
-    public float startBurningTemp = 130, endBurningTemp = 150, turnToDustTemp = 160;
+    public float startBurningPercent = 130, endBurningPercent = 150, turnToDustPercent = 160;
 
     public bool isCookable;
     public float cookSpeed = 1;
     public float cookPercentage;
-    public bool isCooked => cookPercentage >= 100;
-    public bool isBurned => cookPercentage >= startBurningTemp + 5;
+    public bool IsCooked => isCookable && cookPercentage >= 100;
+    public bool IsBurned => cookPercentage >= startBurningPercent;
 
     private Color baseColor;
     public Color cookedColor;
 
 
     private Material material;
-    private Rigidbody rb;
-    private Collider[] coll;
 
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        coll = GetComponentsInChildren<Collider>();
-
         if (transform.TryGetComponentInChildren(out Renderer renderer, true))
         {
             material = renderer.material;
@@ -42,15 +37,6 @@ public class Food : MonoBehaviour
         }
     }
 
-    public void TogglePhysics(bool state)
-    {
-        rb.isKinematic = !state;
-
-        for (int i = 0; i < coll.Length; i++)
-        {
-            coll[i].enabled = state;
-        }
-    }
 
 
     [BurstCompile]
@@ -58,20 +44,24 @@ public class Food : MonoBehaviour
     {
         cookPercentage += addedPercentage * cookSpeed;
 
+        //cook
         if (cookPercentage <= 100)
         {
             material.color = Color.Lerp(baseColor, cookedColor, cookPercentage / 100);
         }
-        else if(cookPercentage >= startBurningTemp && cookPercentage <= endBurningTemp)
+        //burn
+        else if(cookPercentage >= startBurningPercent && cookPercentage <= endBurningPercent)
         {
-            float burnTime = endBurningTemp - startBurningTemp;
+            float burnTime = endBurningPercent - startBurningPercent;
 
-            float burnedOverStartBurnTime = cookPercentage - startBurningTemp;
+            float burnedOverStartBurnTime = cookPercentage - startBurningPercent;
 
             material.color = Color.Lerp(cookedColor, Color.black, burnedOverStartBurnTime / burnTime);
         }
-        else if (cookPercentage >= turnToDustTemp)
+        //turn to dust
+        else if (cookPercentage >= turnToDustPercent)
         {
+            cookPercentage = -100;
             GetComponent<FragmentController>().Shatter(transform.position);
         }
     }

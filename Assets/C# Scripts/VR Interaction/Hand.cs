@@ -66,7 +66,10 @@ public class Hand : MonoBehaviour
             return;
         }
 
-        hapticImpulsePlayer.SendHapticImpulse(vibrationParams.amplitude, vibrationParams.duration);
+        if (hapticImpulsePlayer != null)
+        {
+            hapticImpulsePlayer.SendHapticImpulse(vibrationParams.amplitude, vibrationParams.duration);
+        }
     }
 
 
