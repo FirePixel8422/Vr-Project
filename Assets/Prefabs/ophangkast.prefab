@@ -247,6 +247,7 @@ MonoBehaviour:
   snapTransform: {fileID: 611959793041076347}
   handRotOffset: {x: 0, y: 0, z: 0, w: 0}
   interactionRange: 1
+  forLeftHand: 1
   rotOffset: {x: 0, y: 90, z: 0}
   rotClampMin: {x: 0, y: 0, z: 0}
   rotClampMax: {x: 0, y: 90, z: 0}
@@ -381,6 +382,7 @@ MonoBehaviour:
   snapTransform: {fileID: 7478326026188482124}
   handRotOffset: {x: 0, y: 0, z: 0, w: 0}
   interactionRange: 1
+  forLeftHand: 0
   rotOffset: {x: 0, y: -90, z: 0}
   rotClampMin: {x: 0, y: -90, z: 0}
   rotClampMax: {x: 0, y: 0, z: 0}

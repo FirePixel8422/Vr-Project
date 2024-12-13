@@ -170,6 +170,15 @@ public static class VectorLogic
         return from + move;
     }
 
+    public static Vector3 Abs(Vector3 vector)
+    {
+        return new Vector3(
+            math.abs(vector.x),
+            math.abs(vector.y),
+            math.abs(vector.z)
+        );
+    }
+
 
     public static Vector3 Clamp(this Vector3 value, Vector3 min, Vector3 max)
     {
@@ -233,6 +242,32 @@ public static class Random
         EnsureInitialized();
 
         return random.NextFloat(min, max);
+    }
+
+    public static Vector3 Range(Vector3 min, Vector3 max)
+    {
+        EnsureInitialized();
+
+        Vector3 vec;
+        vec.x = Range(min.x, max.x);
+        vec.y = Range(min.y, max.y);
+        vec.z = Range(min.z, max.z);
+
+
+        return vec;
+    }
+
+    public static float3 Range(float3 min, float3 max)
+    {
+        EnsureInitialized();
+
+        float3 vec;
+        vec.x = Range(min.x, max.x);
+        vec.y = Range(min.y, max.y);
+        vec.z = Range(min.z, max.z);
+
+
+        return vec;
     }
 
     private static void EnsureInitialized()

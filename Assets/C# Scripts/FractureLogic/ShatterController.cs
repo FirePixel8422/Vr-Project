@@ -45,8 +45,6 @@ public class ShatterController : FragmentController
         {
             float3 vel = collision.rigidbody.velocity;
 
-            print(vel);
-
             float calcVel = (math.abs(vel.x) + math.abs(vel.y) + math.abs(vel.z)) * pickupable.weight;
 
             if (calcVel > fractureThreshold)

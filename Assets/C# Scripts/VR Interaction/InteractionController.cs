@@ -20,8 +20,6 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     private Transform overlapSphereTransform;
 
     public Transform heldItemHolder;
-    private Vector3 heldItemHolderPos;
-    private Vector3 heldItemHolderRot;
 
 
     private Interactable heldObject;
@@ -56,9 +54,6 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     {
         hand = GetComponent<Hand>();
 
-        heldItemHolderPos = heldItemHolder.localPosition;
-        heldItemHolderRot = heldItemHolder.localEulerAngles;
-
         hitObjectsInSphere = new Collider[settings.maxExpectedObjectInSphere];
 
 
@@ -71,11 +66,6 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
         savedAngularVelocity = new Vector3[frameAmount];
 
         CustomUpdaterManager.AddUpdater(this);
-    }
-
-    public void SetItemHolderPosition(Vector3 posOffset, Vector3 rotOffset)
-    {
-        heldItemHolder.SetLocalPositionAndRotation(heldItemHolderPos + posOffset, hand.isLeftHand ? Quaternion.Euler(heldItemHolderRot + rotOffset) : Quaternion.Euler(-heldItemHolderRot + rotOffset));
     }
 
 

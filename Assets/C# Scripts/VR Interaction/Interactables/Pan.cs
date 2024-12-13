@@ -25,6 +25,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
 
 
     [SerializeField] private Transform[] burgerPoints;
+    [SerializeField] private Vector3 offsetMin, offsetMax;
     [SerializeField] private List<Food> foodList = new List<Food>();
 
 
@@ -33,40 +34,6 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
     private void Start()
     {
         CustomUpdaterManager.AddUpdater(this);
-    }
-
-
-    public override void Pickup(InteractionController hand)
-    {
-        if (connectedHand != null)
-        {
-            connectedHand.isHoldingObject = false;
-        }
-
-        connectedHand = hand;
-        heldByPlayer = true;
-
-
-        TogglePhysics(false, true);
-
-        bool keepWorldRotation = pickupRotationMode == PickupRotationMode.KeepWorldRotation;
-        bool keepPositionOffsetTohand = pickupPositionMode == PickupPositionMode.KeepRelativePosition;
-
-        transform.SetParent(hand.heldItemHolder, keepPositionOffsetTohand, keepWorldRotation);
-
-        connectedHand.SetItemHolderPosition(pickupPosOffset, pickUpRotOffset);
-
-
-        if (pickupPosOffset != Vector3.zero)
-        {
-            transform.localPosition += pickupPosOffset;
-        }
-        if (pickUpRotOffset != Vector3.zero)
-        {
-            transform.localRotation *= Quaternion.Euler(pickUpRotOffset);
-        }
-
-        rb.isKinematic = true;
     }
 
 
@@ -85,6 +52,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         else if (burgerPoints.Length != foodList.Count && other.transform.TryGetComponent(out Food food) && foodList.Contains(food) == false && food.isCookable)
         {
             food.transform.SetParent(burgerPoints[foodList.Count], false, false);
+            food.transform.position += Random.Range(offsetMin, offsetMax);
 
             food.TogglePhysics(false, true);
 
@@ -161,25 +129,6 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         else
         {
             temparature = math.clamp(temparature - deltaTime * (maxTemp / coolDownTime), minTemp, maxTemp);
-        }
-    }
-
-
-
-    private void OnValidate()
-    {
-        if (pickupPositionMode != PickupPositionMode.SnapToHand)
-        {
-            pickupPositionMode = PickupPositionMode.SnapToHand;
-
-            Debug.LogWarning("Pan Requires Snap To Hand PickUpPositionMode");
-        }
-
-        if (pickupRotationMode != PickupRotationMode.SnapToHand)
-        {
-            pickupRotationMode = PickupRotationMode.SnapToHand;
-
-            Debug.LogWarning("Pan Requires Snap To Hand PickUpRotationMode");
         }
     }
 }

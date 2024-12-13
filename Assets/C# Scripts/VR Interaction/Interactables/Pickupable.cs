@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Burst;
 using Unity.Mathematics;
 using UnityEngine;
@@ -23,10 +24,8 @@ public enum PickupPositionMode : byte
 public class Pickupable : Interactable
 {
     [Header("Pickup Settings")]
-    [SerializeField] protected PickupRotationMode pickupRotationMode = PickupRotationMode.KeepWorldRotation;
     [SerializeField] protected Vector3 pickupPosOffset;
 
-    [SerializeField] protected PickupPositionMode pickupPositionMode = PickupPositionMode.KeepRelativePosition;
     [SerializeField] protected Vector3 pickUpRotOffset;
 
 
@@ -54,24 +53,30 @@ public class Pickupable : Interactable
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        colliders = GetComponents<Collider>();
-    }
 
+        List<Collider> coll = GetComponents<Collider>().ToList();
+        for (int i = 0; i < coll.Count; i++)
+        {
+            if (coll[i].isTrigger)
+            {
+                coll.RemoveAt(i);
+            }
+        }
+
+        colliders = coll.ToArray();
+    }
 
 
     [BurstCompile]
     public override void Pickup(InteractionController hand)
     {
+        bool isRightHand = hand.hand.isRightHand;
+
         base.Pickup(hand);
 
+        transform.SetParent(hand.heldItemHolder, false, false);
+
         TogglePhysics(false);
-
-        bool keepWorldRotation = pickupRotationMode == PickupRotationMode.KeepWorldRotation;
-        bool keepPositionOffsetTohand = pickupPositionMode == PickupPositionMode.KeepRelativePosition;
-
-        transform.SetParent(hand.heldItemHolder, keepPositionOffsetTohand, keepWorldRotation);
-
-        connectedHand.SetItemHolderPosition(pickupPosOffset, pickUpRotOffset);
 
 
         if (pickupPosOffset != Vector3.zero)
@@ -81,6 +86,12 @@ public class Pickupable : Interactable
         if (pickUpRotOffset != Vector3.zero)
         {
             transform.localRotation *= Quaternion.Euler(pickUpRotOffset);
+        }
+
+        if (isRightHand)
+        {
+            transform.localPosition = new Vector3(-transform.localPosition.x, -transform.localPosition.y, -transform.localPosition.z);
+            transform.localEulerAngles = new Vector3(-transform.localEulerAngles.x, -transform.localEulerAngles.y - 180, -transform.localEulerAngles.z);
         }
 
         rb.isKinematic = true;
@@ -94,7 +105,9 @@ public class Pickupable : Interactable
 
         TogglePhysics(true);
 
+
         transform.parent = null;
+
 
         rb.isKinematic = false;
 

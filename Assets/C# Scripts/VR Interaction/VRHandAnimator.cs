@@ -12,7 +12,8 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
     public float valueUpdateSpeed;
 
     private Vector3 localPos;
-    private Quaternion localRot;
+    [HideInInspector]
+    public Quaternion localRot;
 
 
     private void Start()
@@ -41,9 +42,21 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
 
 
 
-    public void UpdateHandTransform(Vector3 pos, Quaternion rot)
+    public void UpdateHandTransform(Vector3 pos, Quaternion rot, bool flipHand)
     {
-        transform.SetPositionAndRotation(pos, rot);
+        Quaternion targetRot = rot;
+        if (flipHand)
+        {
+            targetRot *= Quaternion.Euler(0, 0, 180);
+        }
+
+        Vector3 targetPos = pos;
+        if (flipHand)
+        {
+            targetPos = new Vector3(-pos.x, pos.y, pos.z);
+        }
+
+        transform.SetPositionAndRotation(targetPos, targetRot);
     }
 
     public void ResetHandTransform()

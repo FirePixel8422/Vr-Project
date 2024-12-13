@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2335589669956804758}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.50000036, z: -0, w: 0.86602527}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.48010975, y: 0.042776585, z: 0.36002362}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 1662327574394417178}
   - {fileID: 6379478194423297198}
   m_Father: {fileID: 7506966676168579743}
-  m_LocalEulerAnglesHint: {x: 0, y: 60, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8483374166727949738
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   snapTransform: {fileID: 6379478194423297198}
   handRotOffset: {x: 0, y: 0, z: 0, w: 0}
   interactionRange: 3
+  forLeftHand: 1
   rotOffset: {x: 0, y: 90, z: 0}
   rotClampMin: {x: 0, y: 0, z: 0}
   rotClampMax: {x: 0, y: 85, z: 0}
@@ -362,6 +363,7 @@ MonoBehaviour:
   snapTransform: {fileID: 2932261902998747081}
   handRotOffset: {x: 0, y: 0, z: 0, w: 0}
   interactionRange: 3
+  forLeftHand: 1
   rotOffset: {x: 0, y: 90, z: 0}
   rotClampMin: {x: 0, y: 0, z: 0}
   rotClampMax: {x: 0, y: 85, z: 0}
@@ -493,7 +495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6869577944364674558}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.70299685, y: 0.70299685, z: 0.07612782, w: 0.07612782}
   m_LocalPosition: {x: -0.865, y: 0.307, z: 0.109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -524,7 +526,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8038895062852609278}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalRotation: {x: 0.70299685, y: 0.70299685, z: 0.07612782, w: 0.07612782}
   m_LocalPosition: {x: -0.86499983, y: 1.27, z: 0.12499988}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

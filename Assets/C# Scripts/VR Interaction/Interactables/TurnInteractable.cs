@@ -13,7 +13,7 @@ public enum TurnConstraints : byte
 }
 
 [BurstCompile]
-public class TurnInteractable : Interactable, ICustomLateUpdater
+public class TurnInteractable : Interactable, ICustomUpdater
 {
     [Header("Highest parent of this interactable")]
     public Transform objectRoot;
@@ -31,6 +31,7 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
 
     //public Transform DEBUG_HAND;
 
+    public bool forLeftHand;
     public Vector3 rotOffset;
     public Vector3 rotClampMin, rotClampMax;
 
@@ -69,11 +70,11 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
 
 
 
-    public bool requireLateUpdate => heldByPlayer;
+    public bool requireUpdate => heldByPlayer;
 
 
     [BurstCompile]
-    public void OnLateUpdate()
+    public void OnUpdate()
     {
         Vector3 transformPos = transform.position;
         Vector3 handTransformPos = connectedHand.transform.position;
@@ -103,12 +104,9 @@ public class TurnInteractable : Interactable, ICustomLateUpdater
         }
         else
         {
-            Quaternion targetRot = snapTransform.rotation;
-            //if (connectedHand.hand.isLeftHand)
-            //{
-            //    targetRot *= handRotOffset;
-            //}
-            connectedHand.hand.vrHandAnimator.UpdateHandTransform(snapTransform.position, targetRot);
+            bool flip = forLeftHand != connectedHand.hand.isLeftHand;
+
+            connectedHand.hand.vrHandAnimator.UpdateHandTransform(snapTransform.position, snapTransform.rotation, flip);
         }
     }
 
