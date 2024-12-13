@@ -325,7 +325,7 @@ MonoBehaviour:
   pickupRotationMode: 0
   pickupPosOffset: {x: 0.0677, y: 0.0389, z: -0.0663}
   pickupPositionMode: 0
-  pickUpRotOffset: {x: 79.429, y: 91.509, z: 0}
+  pickUpRotOffset: {x: 0.0677, y: -91.509, z: 0}
   throwVelocityMultiplier: 1
   velocityClamp: {x: 8, y: 8, z: 8}
   minRequiredVelocityXYZ: 0.065

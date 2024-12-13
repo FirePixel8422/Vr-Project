@@ -149,9 +149,9 @@ MonoBehaviour:
   heldByPlayer: 0
   objectSize: 0
   pickupRotationMode: 0
-  pickupPosOffset: {x: 0.0637, y: 0, z: 0.0412}
+  pickupPosOffset: {x: -0.038, y: 0, z: 0.04}
   pickupPositionMode: 0
-  pickUpRotOffset: {x: 0, y: 0, z: -90}
+  pickUpRotOffset: {x: 180, y: 0, z: -90}
   throwVelocityMultiplier: 1.5
   velocityClamp: {x: 12, y: 12, z: 12}
   minRequiredVelocityXYZ: 0.065
