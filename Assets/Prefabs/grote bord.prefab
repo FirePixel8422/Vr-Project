@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ed6d1445dd94994f8d033f7adad125d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1ed6d1445dd94994f8d033f7adad125d, type: 3}
       propertyPath: m_LocalRotation.y
@@ -169,9 +169,14 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  weight: 5
-  pickupRotationMode: 2
+  pickupRotationMode: 1
+  pickupPosOffset: {x: 0, y: 0, z: 0}
+  pickupPositionMode: 1
+  pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 1.5
   velocityClamp: {x: 12, y: 12, z: 12}
   minRequiredVelocityXYZ: 0.065
+  weight: 5
+  rb: {fileID: 0}
+  colliders: []
   debugRBCenterOfMass: 0

@@ -66,10 +66,7 @@ public class Hand : MonoBehaviour
             return;
         }
 
-        if (hapticImpulsePlayer != null)
-        {
-            hapticImpulsePlayer.SendHapticImpulse(vibrationParams.amplitude, vibrationParams.duration);
-        }
+        hapticImpulsePlayer?.SendHapticImpulse(vibrationParams.amplitude, vibrationParams.duration);
     }
 
 
@@ -79,7 +76,7 @@ public class Hand : MonoBehaviour
 
         for (int i = 0; i < pulseCount; i++)
         {
-            hapticImpulsePlayer.SendHapticImpulse(amplitude, duration);
+            hapticImpulsePlayer?.SendHapticImpulse(amplitude, duration);
 
             yield return waitPulseInterval;
         }

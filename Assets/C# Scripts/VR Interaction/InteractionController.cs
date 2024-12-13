@@ -75,7 +75,7 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
 
     public void SetItemHolderPosition(Vector3 posOffset, Vector3 rotOffset)
     {
-        heldItemHolder.SetLocalPositionAndRotation(heldItemHolderPos + posOffset, hand.isLeftHand ? Quaternion.Euler(heldItemHolderRot + rotOffset) : Quaternion.Euler(heldItemHolderRot - rotOffset));
+        heldItemHolder.SetLocalPositionAndRotation(heldItemHolderPos + posOffset, hand.isLeftHand ? Quaternion.Euler(heldItemHolderRot + rotOffset) : Quaternion.Euler(-heldItemHolderRot + rotOffset));
     }
 
 

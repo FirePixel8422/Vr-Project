@@ -124,15 +124,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.539
+      value: 17.583057
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.039
+      value: 0.117
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.016
+      value: 3.0982144
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -144,7 +144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2b3788a0f64f23449a9c118bcd1db04d, type: 3}
       propertyPath: m_LocalRotation.z
@@ -290,11 +290,15 @@ MonoBehaviour:
   heldByPlayer: 0
   objectSize: 0.1225
   pickupRotationMode: 1
+  pickupPosOffset: {x: 0, y: 0, z: 0}
   pickupPositionMode: 0
+  pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 0.85
   velocityClamp: {x: 10, y: 10, z: 10}
   minRequiredVelocityXYZ: 0.065
   weight: 1
+  rb: {fileID: 0}
+  colliders: []
   debugRBCenterOfMass: 0
 --- !u!1001 &9062022376189945862
 PrefabInstance:

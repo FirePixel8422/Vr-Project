@@ -1,5 +1,129 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &175835886323570024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2942952983615702677}
+  m_Layer: 6
+  m_Name: burgerPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2942952983615702677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175835886323570024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.059999943, y: 0, z: 0.43500042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7810447583113194351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &792960017868193167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8892569788269267482}
+  m_Layer: 6
+  m_Name: burgerPoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8892569788269267482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792960017868193167}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.059999943, y: 0, z: 0.31500053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7810447583113194351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1030818578562963978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4004501301123658776}
+  m_Layer: 6
+  m_Name: burgerPoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4004501301123658776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030818578562963978}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.059999943, y: 0, z: 0.31500053}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7810447583113194351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7813240646846628424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4677725161013250918}
+  m_Layer: 6
+  m_Name: burgerPoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4677725161013250918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7813240646846628424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.059999943, y: 0, z: 0.43500042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7810447583113194351}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7777419480006151300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10,7 +134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.741
+      value: 5.735
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       propertyPath: m_LocalPosition.y
@@ -74,7 +198,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2942952983615702677}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4677725161013250918}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4004501301123658776}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8892569788269267482}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
       insertIndex: -1
@@ -120,7 +256,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!64 &3944754784694532724
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -183,25 +319,30 @@ MonoBehaviour:
   heldByPlayer: 0
   objectSize: 0
   pickupRotationMode: 0
-  pickupPosOffset: {x: 0, y: 0, z: 0}
+  pickupPosOffset: {x: 0, y: 0.035, z: 0}
   pickupPositionMode: 0
-  pickUpRotOffset: {x: 0, y: 0, z: 0}
+  pickUpRotOffset: {x: 90, y: -84.5, z: -90}
   throwVelocityMultiplier: 1
   velocityClamp: {x: 8, y: 8, z: 8}
   minRequiredVelocityXYZ: 0.065
   weight: 1
+  rb: {fileID: 0}
+  colliders: []
   debugRBCenterOfMass: 0
-  heatUpTime: 45
-  coolDownTime: 60
+  heatUpTime: 15
+  coolDownTime: 6
   temparature: 0
   minTemp: 25
   maxTemp: 160
-  glideForce: 6
   IsOnGasPitAmount: 0
+  burgerPoints:
+  - {fileID: 2942952983615702677}
+  - {fileID: 4677725161013250918}
+  - {fileID: 4004501301123658776}
+  - {fileID: 8892569788269267482}
   foodList: []
-  prevPos: {x: 0, y: 0, z: 0}
-  savedVelocity: {x: 0, y: 0, z: 0}
-  prevRot: {x: 0, y: 0, z: 0, w: 0}
-  savedAngularVelocity: {x: 0, y: 0, z: 0}
-  foodThrowMultiplier: 1000
-  frameAmount: 1
+--- !u!4 &7810447583113194351 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd7188292b8c5fd4da52ca394c94c626, type: 3}
+  m_PrefabInstance: {fileID: 7777419480006151300}
+  m_PrefabAsset: {fileID: 0}

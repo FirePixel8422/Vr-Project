@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658191446817761538}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.875, y: 0.978, z: 0.032}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7134141408016186009}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &2380514168488539939
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +242,7 @@ GameObject:
   - component: {fileID: 7388847669385384945}
   - component: {fileID: 6206185615694644672}
   - component: {fileID: 1539779031651307417}
+  - component: {fileID: 3243271682274745313}
   m_Layer: 6
   m_Name: Cube.001
   m_TagString: Untagged
@@ -333,12 +334,33 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  weight: 1
   objectRoot: {fileID: 8566338658233320316}
   turnOnAxis: 2
   snapPlayerHandToTransform: 1
   snapTransform: {fileID: 4302933139157172492}
-  interactionRange: 1
-  rotOffset: {x: 0, y: 0, z: 0}
-  rotClampMin: {x: 0, y: -180, z: 0}
+  handRotOffset: {x: 0, y: 0, z: 0, w: 0}
+  interactionRange: 4
+  rotOffset: {x: 0, y: -90, z: 0}
+  rotClampMin: {x: 0, y: -130, z: 0}
   rotClampMax: {x: 0, y: 0, z: 0}
+--- !u!65 &3243271682274745313
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159575755581835169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12605597, y: 0.27632084, z: 0.07821222}
+  m_Center: {x: 0.8921509, y: 0.9827393, z: 0.036392733}

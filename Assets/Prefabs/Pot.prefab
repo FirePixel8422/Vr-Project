@@ -80,11 +80,15 @@ MonoBehaviour:
   heldByPlayer: 0
   objectSize: 0
   pickupRotationMode: 1
+  pickupPosOffset: {x: 0, y: 0, z: 0}
   pickupPositionMode: 1
+  pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 1
   velocityClamp: {x: 8, y: 8, z: 8}
   minRequiredVelocityXYZ: 0.065
   weight: 1
+  rb: {fileID: 0}
+  colliders: []
   debugRBCenterOfMass: 0
 --- !u!64 &161221903450447147
 MeshCollider:
