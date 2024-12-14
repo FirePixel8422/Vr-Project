@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _FoamAmount: 1
-    - _FoamCutOff: 1.02
+    - _FoamCutOff: 1
     - _FoamScale: 150
     - _FoamSpeed: 0.03
     - _QueueControl: 0
@@ -46,9 +46,9 @@ Material:
     - _RippleDensity: 4
     - _RippleSpeed: 2
     - _RippleThickness: 8
-    - _Water_Move_Strengt: 0.1
+    - _Water_Move_Strengt: 10
     - _WaveSpeed: 0.1
-    - _WaveStenght: 2
+    - _WaveStenght: 1
     m_Colors:
     - _Base_Colour: {r: 0, g: 0.27620697, b: 1, a: 0}
     - _FoamColour: {r: 1, g: 0.7327044, b: 0.7327044, a: 1}

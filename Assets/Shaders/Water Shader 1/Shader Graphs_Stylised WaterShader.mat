@@ -54,18 +54,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Distance: 4.9
-    - _FoamAmount: 1
+    - _Alpha: 1
+    - _Distance: 10
+    - _FoamAmount: 2.86
     - _FoamCutOff: 2
     - _FoamScale: 100
     - _FoamSpeed: 1
     - _HighFrequency: 1
-    - _NormalStrenght: 1
+    - _NormalStrenght: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RefractionSpeed: 0.75
+    - _RefractionSpeed: 0.01
     - _RefractionStrenght: 0.05
-    - _WaveAmpitude: 0.05
+    - _Smoothness: 0.4
+    - _WaveAmpitude: 0.1
     - _WaveSpeed: 2.5
     m_Colors:
     - _DeepColor: {r: 0.008801019, g: 0.021181855, b: 0.5597484, a: 0.54901963}
