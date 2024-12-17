@@ -50,13 +50,7 @@ public class VRHandAnimator : MonoBehaviour, ICustomUpdater
             targetRot *= Quaternion.Euler(0, 0, 180);
         }
 
-        Vector3 targetPos = pos;
-        if (flipHand)
-        {
-            targetPos = new Vector3(-pos.x, pos.y, pos.z);
-        }
-
-        transform.SetPositionAndRotation(targetPos, targetRot);
+        transform.SetPositionAndRotation(pos, targetRot);
     }
 
     public void ResetHandTransform()

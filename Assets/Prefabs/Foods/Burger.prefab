@@ -2360,7 +2360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 667960f9e6e42314890d5c20b9035a4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.0150003
+      value: 7.015001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 667960f9e6e42314890d5c20b9035a4c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2368,7 +2368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 667960f9e6e42314890d5c20b9035a4c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.644
+      value: -8.464
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 667960f9e6e42314890d5c20b9035a4c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2488,7 +2488,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &1012172156959471181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2506,9 +2506,7 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  pickupRotationMode: 1
   pickupPosOffset: {x: 0, y: 0, z: 0}
-  pickupPositionMode: 1
   pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 1
   velocityClamp: {x: 6, y: 6, z: 6}
@@ -2524,10 +2522,10 @@ MonoBehaviour:
     foodIndex: 0
   minCookTemp: 60
   startBurningPercent: 130
-  endBurningPercent: 150
-  turnToDustPercent: 160
+  endBurningPercent: 155
+  turnToDustPercent: 165
   isCookable: 1
-  cookSpeed: 10
+  cookSpeed: 8
   cookPercentage: 0
   cookedColor: {r: 0.38039216, g: 0.15294118, b: 0.043137256, a: 1}
 --- !u!114 &5239044621841977865
@@ -2553,7 +2551,5 @@ MonoBehaviour:
     pulseCount: 1
     pulseInterval: 0
   audioClips: []
-  minDelay: 0
-  maxDelay: 0
   minVolume: 0
   maxVolume: 0

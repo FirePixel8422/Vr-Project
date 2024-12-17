@@ -61,6 +61,8 @@ public class Interactable : MonoBehaviour
     [BurstCompile]
     public virtual void Throw(Vector3 velocity, Vector3 angularVelocity)
     {
+        print("base thrown");
+
         connectedHand = null;
         heldByPlayer = false;
     }

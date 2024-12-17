@@ -55,6 +55,8 @@ public class BowlingController : InteractableButton
             bowlingPawns[i].Drop();
 
             bowlingPawns[i].transform.SetPositionAndRotation(spawnPositions[i], Quaternion.identity);
+            bowlingPawns[i].rb.velocity = Vector3.zero;
+            bowlingPawns[i].rb.angularVelocity = Vector3.zero;
         }
 
         Hand.Left.SendVibration(vibrationParams);

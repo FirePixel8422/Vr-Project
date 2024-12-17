@@ -1,5 +1,6 @@
 using System;
 using Unity.Burst;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -37,7 +38,7 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
 
 
-    private void Start()
+    protected virtual void Start()
     {
         CustomUpdaterManager.AddUpdater(this);
     }
@@ -81,7 +82,7 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
         if (snapPlayerHandToTransform)
         {
-            SnapHandToTransform(transformPos, handTransformPos);
+            SnapHandToTransform(handTransformPos);
         }
 
 
@@ -90,9 +91,9 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
 
     [BurstCompile]
-    private void SnapHandToTransform(Vector3 transformPos, Vector3 handTransformPos)
+    private void SnapHandToTransform(Vector3 handTransformPos)
     {
-        float handDistanceToTransform = Vector3.Distance(transformPos, handTransformPos);
+        float handDistanceToTransform = Vector3.Distance(snapTransform.position, handTransformPos);
 
         if (handDistanceToTransform > interactionRange)
         {
@@ -112,7 +113,7 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
 
     [BurstCompile]
-    private void RotateTransform(Vector3 transformPos, Vector3 handTransformPos)
+    protected virtual void RotateTransform(Vector3 transformPos, Vector3 handTransformPos)
     {
         Vector3 dir = (handTransformPos - transformPos).normalized;
 

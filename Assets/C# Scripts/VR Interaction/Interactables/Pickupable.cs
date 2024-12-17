@@ -7,18 +7,6 @@ using UnityEngine;
 
 
 
-public enum PickupRotationMode : byte
-{
-    SnapToHand,
-    KeepWorldRotation,
-}
-public enum PickupPositionMode : byte
-{
-    SnapToHand,
-    KeepRelativePosition,
-}
-
-
 [RequireComponent(typeof(Rigidbody))]
 [BurstCompile]
 public class Pickupable : Interactable
@@ -105,6 +93,7 @@ public class Pickupable : Interactable
 
         TogglePhysics(true);
 
+        print("thrwon");
 
         transform.parent = null;
 

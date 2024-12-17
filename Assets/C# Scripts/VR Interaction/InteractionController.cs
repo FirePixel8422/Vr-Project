@@ -39,7 +39,7 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     {
         if (ctx.performed && isHoldingObject == false && objectSelected)
         {
-            Pickup();
+            Pickup(toPickupObject);
         }
 
         if (ctx.canceled && isHoldingObject)
@@ -248,7 +248,7 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     #region Drop and Pickup
 
     [BurstCompile]
-    public void Pickup()
+    public void Pickup(Interactable toPickupObject)
     {
         //if the object that is trying to be picked up by this hand, is held by the other hand and canSwapItemFromHands is false, return
         if (toPickupObject.interactable == false || (toPickupObject.heldByPlayer && settings.canSwapItemFromHands == false))
@@ -283,6 +283,7 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
                 angularVelocity += savedAngularVelocity[i] / frameAmount;
             }
 
+            print("throw called");
             heldObject.Throw(velocity, angularVelocity);
         }
         else

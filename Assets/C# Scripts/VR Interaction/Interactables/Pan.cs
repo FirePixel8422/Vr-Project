@@ -51,6 +51,8 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         //get food if not already full
         else if (burgerPoints.Length != foodList.Count && other.transform.TryGetComponent(out Food food) && foodList.Contains(food) == false && food.isCookable)
         {
+            print("burger added");
+
             food.transform.SetParent(burgerPoints[foodList.Count], false, false);
             food.transform.position += Random.Range(offsetMin, offsetMax);
 
@@ -80,6 +82,8 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         //remove food
         else if (other.transform.TryGetComponent(out Food food) && foodList.Contains(food))
         {
+            print("burger removed");
+
             food.transform.parent = null;
 
             food.TogglePhysics(true);

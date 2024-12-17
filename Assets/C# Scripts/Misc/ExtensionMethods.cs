@@ -270,6 +270,34 @@ public static class Random
         return vec;
     }
 
+
+    public static int3 Range(int3 min, int3 max)
+    {
+        EnsureInitialized();
+
+        int3 vec;
+        vec.x = Range(min.x, max.x);
+        vec.y = Range(min.y, max.y);
+        vec.z = Range(min.z, max.z);
+
+
+        return vec;
+    }
+
+    public static Color RandomColor(bool randomizeAlpha = false)
+    {
+        EnsureInitialized();
+
+        Color color;
+        color.r = random.NextFloat();
+        color.g = random.NextFloat();
+        color.b = random.NextFloat();
+        color.a = randomizeAlpha ? random.NextFloat() : 1;
+
+
+        return color;
+    }
+
     private static void EnsureInitialized()
     {
         if (random.Equals(default(Unity.Mathematics.Random)))
