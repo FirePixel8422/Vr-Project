@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ToonGradient_Cellshader
+  m_Name: Cat_Cellshader
   m_Shader: {fileID: -6465566751694194690, guid: b3677915dd7a03447b1450ec8918c568, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: 5fb8831eeca141d4e9adbf5aa8d727ea, type: 3}
+        m_Texture: {fileID: 2800000, guid: 09799ae6bccd12544a70c8163b64eaab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
