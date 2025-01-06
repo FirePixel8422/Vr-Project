@@ -28,6 +28,9 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
     [SerializeField] private Vector3 offsetMin, offsetMax;
     [SerializeField] private List<Food> foodList = new List<Food>();
 
+    [SerializeField] private Color[] panColors;
+    [SerializeField] private Renderer panRenderer;
+
 
 
 
@@ -51,8 +54,6 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         //get food if not already full
         else if (burgerPoints.Length != foodList.Count && other.transform.TryGetComponent(out Food food) && foodList.Contains(food) == false && food.isCookable)
         {
-            print("burger added");
-
             food.transform.SetParent(burgerPoints[foodList.Count], false, false);
             food.transform.position += Random.Range(offsetMin, offsetMax);
 
@@ -82,8 +83,6 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         //remove food
         else if (other.transform.TryGetComponent(out Food food) && foodList.Contains(food))
         {
-            print("burger removed");
-
             food.transform.parent = null;
 
             food.TogglePhysics(true);
@@ -134,5 +133,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         {
             temparature = math.clamp(temparature - deltaTime * (maxTemp / coolDownTime), minTemp, maxTemp);
         }
+
+        panRenderer.material.color = Color.LerpUnclamped(panColors[0], panColors[1], (temparature - minTemp) / (maxTemp - minTemp));
     }
 }

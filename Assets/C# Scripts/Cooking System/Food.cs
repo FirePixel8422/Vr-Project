@@ -27,6 +27,7 @@ public class Food : Pickupable
     private Material material;
 
 
+    [BurstCompile]
     private void Start()
     {
         if (transform.TryGetComponentInChildren(out Renderer renderer, true))
