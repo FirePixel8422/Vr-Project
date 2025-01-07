@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdef118a562ccf4e91c3206c62216d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.565353
+      value: 120.43924
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdef118a562ccf4e91c3206c62216d7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000047683716
+      value: 22.898737
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdef118a562ccf4e91c3206c62216d7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.0247451
+      value: 90.53108
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: efdef118a562ccf4e91c3206c62216d7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: efdef118a562ccf4e91c3206c62216d7, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c2e738241b93db1448900788e1d3f63e, type: 2}
+      objectReference: {fileID: 2100000, guid: da562d7117d7dc5458537a27a44f30a3, type: 2}
     - target: {fileID: 919132149155446097, guid: efdef118a562ccf4e91c3206c62216d7, type: 3}
       propertyPath: m_Name
       value: stoel

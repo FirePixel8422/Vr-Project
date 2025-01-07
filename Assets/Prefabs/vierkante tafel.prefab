@@ -22,19 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.089308
+      value: 119.03198
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0000009536743
+      value: 22.898739
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.203
+      value: 90.897194
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9238798
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.38268274
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7771a08913951cd44803d19dfcc6526c, type: 2}
+      objectReference: {fileID: 2100000, guid: da562d7117d7dc5458537a27a44f30a3, type: 2}
     - target: {fileID: 919132149155446097, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_Name
       value: vierkante tafel
