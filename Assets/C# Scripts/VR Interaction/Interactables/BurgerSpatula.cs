@@ -35,8 +35,6 @@ public class BurgerSpatula : MonoBehaviour, ICustomLateUpdater
         if (heldFood != null && coll.TryGetComponent(out Food food) && food.IsCooked)
         {
             heldFood = null;
-
-            food.TogglePhysics(true);
         }
     }
 
