@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Trashcan_Cellshader
+  m_Name: LightGrey_Cellshader
   m_Shader: {fileID: -6465566751694194690, guid: b3677915dd7a03447b1450ec8918c568, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0

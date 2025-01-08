@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Chair_Cellshader
+  m_Name: SlicedOnion_Cellshader
   m_Shader: {fileID: -6465566751694194690, guid: b3677915dd7a03447b1450ec8918c568, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,7 +37,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 3ec32d46ca10da746a51497f4bfcc42c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -54,7 +54,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Ambient: 1.5
+    - _Ambient: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _RimLightBrightness: 0
@@ -63,6 +63,6 @@ Material:
     - _ToonRampOffsetPoint: 0.62
     - _ToonRampSmoothness: 0.7
     m_Colors:
-    - _Color: {r: 0.1509434, g: 0.025794195, b: 0.012103953, a: 0}
-    - _ToonRampTinting: {r: 0, g: 0, b: 0, a: 0}
+    - _Color: {r: 0.71662515, g: 0.64548296, b: 0.4103566, a: 0}
+    - _ToonRampTinting: {r: 0.6568173, g: 0.1404126, b: 0.1404126, a: 0}
   m_BuildTextureStacks: []
