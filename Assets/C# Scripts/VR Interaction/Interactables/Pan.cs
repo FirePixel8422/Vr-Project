@@ -8,7 +8,7 @@ using UnityEngine;
 
 
 [BurstCompile]
-public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
+public class Pan : Pickupable, ICustomUpdater
 {
     [Header("Pan Settings")]
 
@@ -20,8 +20,8 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
 
 
 
-    [SerializeField] private int IsOnGasPitAmount;
-    private bool IsOnGasPit => IsOnGasPitAmount > 0;
+    [SerializeField] private int onGasPitAmount;
+    private bool IsOnGasPit => onGasPitAmount > 0;
 
 
     [SerializeField] private Transform[] burgerPoints;
@@ -34,7 +34,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
 
 
 
-    private void Start()
+    protected override void Start()
     {
         CustomUpdaterManager.AddUpdater(this);
     }
@@ -48,7 +48,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         //check for Stove
         if (other.transform.TryGetComponent(out ApplienceObject applience) && applience.applience.applienceName == "GasBurner")
         {
-            IsOnGasPitAmount += 1;
+            onGasPitAmount += 1;
         }
 
         //get food if not already full
@@ -77,7 +77,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         //check for Stove
         if (other.transform.TryGetComponent(out ApplienceObject applience) && applience.applience.applienceName == "GasBurner")
         {
-            IsOnGasPitAmount -= 1;
+            onGasPitAmount -= 1;
         }
 
         //remove food
@@ -99,12 +99,14 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
 
 
     //only update if the Pan is on a gasPit, is not on a gaspit and still needs to cool down or has food in it
-    public bool requireUpdate_10FPS => IsOnGasPit || temparature > minTemp || foodList.Count != 0;
+    public bool requireUpdate => IsOnGasPit || temparature > minTemp || foodList.Count != 0;
 
 
     [BurstCompile]
-    public void OnIntervalUpdate_10FPS(float deltaTime)
+    public void OnUpdate()
     {
+        float deltaTime = Time.deltaTime;
+
         //all food inside of the pan
         for (int i = 0; i < foodList.Count; i++)
         {
