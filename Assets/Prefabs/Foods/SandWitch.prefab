@@ -133,6 +133,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+<<<<<<< Updated upstream
+=======
+--- !u!114 &7867310424864914569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367599661811789823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedHand: {fileID: 0}
+  interactable: 1
+  isThrowable: 1
+  heldByPlayer: 0
+  objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  pickupPosOffset: {x: 0, y: 0, z: 0}
+  pickUpRotOffset: {x: 0, y: 0, z: 0}
+  throwVelocityMultiplier: 1
+  velocityClamp: {x: 8, y: 8, z: 8}
+  minRequiredVelocityXYZ: 0.065
+  weight: 1
+  rb: {fileID: 0}
+  colliders: []
+  debugRBCenterOfMass: 0
+>>>>>>> Stashed changes
 --- !u!65 &2125066718654238950
 BoxCollider:
   m_ObjectHideFlags: 0
