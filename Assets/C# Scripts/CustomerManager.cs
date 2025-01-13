@@ -17,10 +17,10 @@ public class CustomerManager : MonoBehaviour
 
     [SerializeField] private Transform[] waypoints;
     
-    private float3[] wayPointPositions;
+    [HideInInspector] public float3[] wayPointPositions;
 
 
-    [SerializeField] private Customer[] customers;
+    private Customer[] customers;
 
     [SerializeField] private Food[] foodsForOrder;
 
@@ -37,6 +37,13 @@ public class CustomerManager : MonoBehaviour
         for (int i = 0; i < wayPointCount; i++)
         {
             wayPointPositions[i] = new Vector3(waypoints[i].position.x, 0, waypoints[i].position.z);
+        }
+
+        customers = FindObjectsOfType<Customer>();
+
+        for (int i = 0; i < customers.Length; i++)
+        {
+            customers[i].Init(wayPointPositions);
         }
 
         SelectNewCustomer();

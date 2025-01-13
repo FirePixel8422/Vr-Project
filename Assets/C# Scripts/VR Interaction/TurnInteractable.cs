@@ -38,7 +38,7 @@ public class TurnInteractable : Interactable, ICustomUpdater
 
 
 
-    protected virtual void Start()
+    protected override void Start()
     {
         CustomUpdaterManager.AddUpdater(this);
     }
