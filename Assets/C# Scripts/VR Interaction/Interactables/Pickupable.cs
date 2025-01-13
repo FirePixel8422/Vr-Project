@@ -41,6 +41,9 @@ public class Pickupable : Interactable
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
 
         List<Collider> coll = GetComponents<Collider>().ToList();
         for (int i = 0; i < coll.Count; i++)
@@ -92,8 +95,6 @@ public class Pickupable : Interactable
         base.Throw(velocity, angularVelocity);
 
         TogglePhysics(true);
-
-        print("thrwon");
 
         transform.parent = null;
 

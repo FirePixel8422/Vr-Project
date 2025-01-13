@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Burst;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 
@@ -20,6 +21,13 @@ public class Interactable : MonoBehaviour
 
     public float objectSize;
 
+    [SerializeField] private UnityEvent OnInteract;
+
+
+    protected virtual void Start()
+    {
+
+    }
 
 
     #region Select And Deselect
@@ -53,6 +61,8 @@ public class Interactable : MonoBehaviour
 
         connectedHand = hand;
         heldByPlayer = true;
+
+        OnInteract.Invoke();
     }
 
 

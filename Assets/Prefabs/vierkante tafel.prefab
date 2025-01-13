@@ -22,19 +22,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 119.03198
+      value: 5.448766
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.898739
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 90.897194
+      value: -2.3202515
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9238798
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -42,7 +42,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.38268274
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -100,6 +100,6 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: c0932008a09c34344a2c3ff5b9f05f8b, type: 3}

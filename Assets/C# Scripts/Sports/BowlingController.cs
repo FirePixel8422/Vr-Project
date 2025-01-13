@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.XR;
+
+
+
 
 public class BowlingController : InteractableButton
 {
@@ -17,7 +15,7 @@ public class BowlingController : InteractableButton
 
 
 
-    public override void Start()
+    protected override void Start()
     {
         base.Start();
 

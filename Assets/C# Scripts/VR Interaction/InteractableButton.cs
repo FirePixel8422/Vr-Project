@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+
 
 public class InteractableButton : Interactable
 {
     private Animator buttonAnimator;
 
-    public virtual void Start()
+
+    protected override void Start()
     {
+        base.Start();
+
         buttonAnimator = GetComponent<Animator>();
     }
 

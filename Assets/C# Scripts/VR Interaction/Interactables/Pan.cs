@@ -26,7 +26,7 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
 
     [SerializeField] private Transform[] burgerPoints;
     [SerializeField] private Vector3 offsetMin, offsetMax;
-    [SerializeField] private List<Food> foodList = new List<Food>();
+    [SerializeField] private List<Burger> foodList = new List<Burger>();
 
     [SerializeField] private Color[] panColors;
     [SerializeField] private Renderer panRenderer;
@@ -52,21 +52,21 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         }
 
         //get food if not already full
-        else if (burgerPoints.Length != foodList.Count && other.transform.TryGetComponent(out Food food) && foodList.Contains(food) == false && food.isCookable)
+        else if (burgerPoints.Length != foodList.Count && other.transform.TryGetComponent(out Burger burger) && foodList.Contains(burger) == false)
         {
-            food.transform.SetParent(burgerPoints[foodList.Count], false, false);
-            food.transform.position += Random.Range(offsetMin, offsetMax);
+            burger.transform.SetParent(burgerPoints[foodList.Count], false, false);
+            burger.transform.position += Random.Range(offsetMin, offsetMax);
 
-            food.TogglePhysics(false, true);
+            burger.TogglePhysics(false, true);
 
-            if (food.connectedHand != null)
+            if (burger.connectedHand != null)
             {
-                food.connectedHand.isHoldingObject = false;
+                burger.connectedHand.isHoldingObject = false;
             }
 
-            food.interactable = false;
+            burger.interactable = false;
 
-            foodList.Add(food);
+            foodList.Add(burger);
         }
     }
 
@@ -81,15 +81,15 @@ public class Pan : Pickupable, ICustomIntervalUpdater_10FPS
         }
 
         //remove food
-        else if (other.transform.TryGetComponent(out Food food) && foodList.Contains(food))
+        else if (other.transform.TryGetComponent(out Burger burger) && foodList.Contains(burger))
         {
-            food.transform.parent = null;
+            burger.transform.parent = null;
 
-            food.TogglePhysics(true);
+            burger.TogglePhysics(true);
 
-            food.interactable = true;
+            burger.interactable = true;
 
-            foodList.Remove(food);
+            foodList.Remove(burger);
         }
     }
 
