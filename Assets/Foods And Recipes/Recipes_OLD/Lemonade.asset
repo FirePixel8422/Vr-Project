@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 88b1cd1cf6eddf843869bbd5ecf14ea2, type: 3}
-  m_Name: Pizza_a_la_mere
+  m_Name: Lemonade
   m_EditorClassIdentifier: 
   recipe:
     requiredFood:
-    - {fileID: 11400000, guid: c618d9d95e54f814c96239fe5c159e0f, type: 2}
-    - {fileID: 11400000, guid: 7b1ed63ceffc47f42882d9b49382ad14, type: 2}
-    - {fileID: 11400000, guid: 5897f37ede8b5f9489056ae281fd446e, type: 2}
-    - {fileID: 11400000, guid: c86e190cf19bc0e43bb0c074bdc961ff, type: 2}
+    - {fileID: 11400000, guid: 01dc9677b83162b42a19e2e62325e03e, type: 2}
+    - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
     requiredApplience: {fileID: 11400000, guid: 3070fd38c4c95a14e83bf58b4fccf315, type: 2}

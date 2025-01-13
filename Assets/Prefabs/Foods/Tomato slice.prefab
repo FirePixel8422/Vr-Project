@@ -91,7 +91,7 @@ PrefabInstance:
       addedObject: {fileID: 6086549181246136756}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5474294372554109867}
+      addedObject: {fileID: -8385082577876061313}
   m_SourcePrefab: {fileID: 100100000, guid: ed0cfd214b34d1946a8823d90734b9ce, type: 3}
 --- !u!1 &2128639288148251165 stripped
 GameObject:
@@ -168,7 +168,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &5474294372554109867
+--- !u!114 &-8385082577876061313
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128639288148251165}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 47d0d9034500ecb4d8a63946d820f766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   connectedHand: {fileID: 0}
@@ -185,12 +185,20 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   pickupPosOffset: {x: 0, y: 0, z: 0}
   pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 1
-  velocityClamp: {x: 8, y: 8, z: 8}
+  velocityClamp: {x: 3, y: 3, z: 3}
   minRequiredVelocityXYZ: 0.065
   weight: 1
   rb: {fileID: 0}
   colliders: []
   debugRBCenterOfMass: 0
+  foodType: {fileID: 11400000, guid: c86e190cf19bc0e43bb0c074bdc961ff, type: 2}
+  requiredRecipe:
+    requiredFood: []
+    requiredApplience: {fileID: 0}
+    foodIndex: 0

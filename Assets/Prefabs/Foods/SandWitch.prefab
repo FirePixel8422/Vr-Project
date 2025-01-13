@@ -93,13 +93,13 @@ PrefabInstance:
       addedObject: {fileID: 735092247914733212}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 26147cc5609b25d488d508e474453847, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7867310424864914569}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 26147cc5609b25d488d508e474453847, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2125066718654238950}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 26147cc5609b25d488d508e474453847, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8555774488459388283}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 26147cc5609b25d488d508e474453847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 665146045541724306}
   m_SourcePrefab: {fileID: 100100000, guid: 26147cc5609b25d488d508e474453847, type: 3}
 --- !u!1 &367599661811789823 stripped
 GameObject:
@@ -133,32 +133,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &7867310424864914569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367599661811789823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c012a2f5b8485b4c81e3c0e7f911b9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connectedHand: {fileID: 0}
-  interactable: 1
-  isThrowable: 1
-  heldByPlayer: 0
-  objectSize: 0
-  pickupPosOffset: {x: 0, y: 0, z: 0}
-  pickUpRotOffset: {x: 0, y: 0, z: 0}
-  throwVelocityMultiplier: 1
-  velocityClamp: {x: 8, y: 8, z: 8}
-  minRequiredVelocityXYZ: 0.065
-  weight: 1
-  rb: {fileID: 0}
-  colliders: []
-  debugRBCenterOfMass: 0
 --- !u!65 &2125066718654238950
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -201,6 +175,40 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.43
   m_Center: {x: -0.015550948, y: 0.081797674, z: 0.00000000745058}
+--- !u!114 &665146045541724306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367599661811789823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47d0d9034500ecb4d8a63946d820f766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedHand: {fileID: 0}
+  interactable: 1
+  isThrowable: 1
+  heldByPlayer: 0
+  objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+  pickupPosOffset: {x: 0, y: 0, z: 0}
+  pickUpRotOffset: {x: 0, y: 0, z: 0}
+  throwVelocityMultiplier: 1
+  velocityClamp: {x: 3, y: 3, z: 3}
+  minRequiredVelocityXYZ: 0.065
+  weight: 1
+  rb: {fileID: 0}
+  colliders: []
+  debugRBCenterOfMass: 0
+  foodType: {fileID: 11400000, guid: a9d93fa99579c0d46b8a6d89695e5911, type: 2}
+  requiredRecipe:
+    requiredFood: []
+    requiredApplience: {fileID: 0}
+    foodIndex: 0
 --- !u!4 &1031932745227973957 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 26147cc5609b25d488d508e474453847, type: 3}
