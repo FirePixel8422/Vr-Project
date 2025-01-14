@@ -1,7 +1,6 @@
 using System.Collections;
 using Unity.Burst;
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 
 [BurstCompile]

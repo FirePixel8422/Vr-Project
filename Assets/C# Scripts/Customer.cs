@@ -55,6 +55,10 @@ public class Customer : MonoBehaviour, ICustomUpdater
         
         patience = maxPatience;
 
+
+        StopAllCoroutines();
+        roaming = false;
+
         ordering = true;
     }
 
@@ -156,7 +160,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
     {
         yield return new WaitForSeconds(patience);
 
-        updateAIPath = true;
+        roaming = true;
 
         CustomerManager.Instance.SelectNewCustomer();
     }
