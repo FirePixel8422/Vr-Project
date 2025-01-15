@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lemonade
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d762e0797a570714ba0cac00d4d9dd3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -130,6 +134,9 @@ MonoBehaviour:
   debugRBCenterOfMass: 0
   foodType: {fileID: 0}
   requiredRecipe:
-    requiredFood: []
+    requiredFood:
+    - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
+    - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
+    - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
     requiredApplience: {fileID: 11400000, guid: 3070fd38c4c95a14e83bf58b4fccf315, type: 2}
     foodIndex: 0

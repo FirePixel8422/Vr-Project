@@ -1,5 +1,6 @@
 using System;
 using Unity.Burst;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,6 +29,9 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     private Interactable toPickupObject;
     public bool objectSelected;
 
+    public IOnHoverImpulsable toClickUI;
+    public bool uiSelected;
+
 
     private Collider[] hitObjectsInSphere;
     private RaycastHit rayHit;
@@ -37,9 +41,21 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     [BurstCompile]
     public void OnClick(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && isHoldingObject == false && objectSelected)
+        if (ctx.performed)
         {
-            Pickup(toPickupObject);
+            if (uiSelected)
+            {
+                toClickUI.OnClicked();
+
+                print("ui clicked called");
+
+                uiSelected = false;
+            }
+
+            if (isHoldingObject == false && objectSelected)
+            {
+                Pickup(toPickupObject);
+            }
         }
 
         if (ctx.canceled && isHoldingObject)
@@ -190,7 +206,9 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
     [BurstCompile]
     private bool ShootRayCast()
     {
-        if (Physics.Raycast(rayTransform.position, rayTransform.forward, out rayHit, settings.interactRayCastRange, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide)
+        Ray ray = new Ray(rayTransform.position, rayTransform.forward);
+
+        if (Physics.Raycast(ray, out rayHit, settings.interactRayCastRange, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Collide)
                 && rayHit.transform.TryGetComponent(out Interactable new_ToPickupObject))
         {
             //if you are holdijg nothing, or the new_ToPickupObject isnt already selected, select the object and deselect potential previous selected object
@@ -199,8 +217,33 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
                 SelectNewObject(new_ToPickupObject);
             }
 
+            uiSelected = false;
+
             //new object found
             return true;
+        }
+        else if (Physics.Raycast(ray, out RaycastHit hit, settings.interactRayCastRange, settings.interactablesLayer))
+        {
+            //print(hit.transform.name);
+            if (hit.transform.gameObject.TryGetComponent(out IOnHoverImpulsable newToClickUI))
+            {
+                //return if already selected
+                if (toClickUI == newToClickUI)
+                {
+                    return false;
+                }
+
+                toClickUI = newToClickUI;
+
+                uiSelected = true;
+
+                hand.SendVibration(settings.selectPickupVibrationParams);
+                return true;
+            }
+        }
+        else
+        {
+            uiSelected = false;
         }
 
         //no new object found
