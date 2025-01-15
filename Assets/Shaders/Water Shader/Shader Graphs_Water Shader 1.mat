@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Water Shader
+  m_Name: Shader Graphs_Water Shader 1
   m_Shader: {fileID: -6465566751694194690, guid: 28319f99376b13041a08ea936775bdac, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -50,7 +50,7 @@ Material:
     - _WaveSpeed: 0.1
     - _WaveStenght: 1
     m_Colors:
-    - _Base_Colour: {r: 0, g: 0.3529412, b: 1, a: 0}
+    - _Base_Colour: {r: 0, g: 0.27620697, b: 1, a: 0}
     - _FoamColour: {r: 1, g: 0.7327044, b: 0.7327044, a: 1}
     - _Ripple_Colour: {r: 0.38362685, g: 2.621124, b: 3.012181, a: 0}
   m_BuildTextureStacks: []
