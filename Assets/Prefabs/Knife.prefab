@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.787
+      value: 0.17199993
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.009
+      value: 1.0089997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.825
+      value: 2.2250004
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_LocalRotation.w
@@ -55,11 +55,11 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6116576e643985240aefa06f4356e5f1, type: 2}
+      objectReference: {fileID: 2100000, guid: 911506fd17314384593f46dc3902e94d, type: 2}
     - target: {fileID: -678588488315902003, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0a6cf67da08c3bd46a789d51fdf6b52a, type: 2}
+      objectReference: {fileID: 2100000, guid: c90e91687564d9a4283514d43a6221b7, type: 2}
     - target: {fileID: 919132149155446097, guid: f74f72647f7925a4cbd6dec7e8fdbcfe, type: 3}
       propertyPath: m_Name
       value: Knife
@@ -166,9 +166,10 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  pickupRotationMode: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   pickupPosOffset: {x: 0.0661, y: -0.0145, z: -0.0812}
-  pickupPositionMode: 0
   pickUpRotOffset: {x: 253.213, y: 99.706, z: -9.593994}
   throwVelocityMultiplier: 0.8
   velocityClamp: {x: 4, y: 4, z: 4}

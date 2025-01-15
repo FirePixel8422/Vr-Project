@@ -111,7 +111,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 5.926, y: 0.092, z: -8.756}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
+  m_LocalScale: {x: 1.1000003, y: 1.1, z: 1.1000003}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8117989747996654302}
@@ -512,7 +512,7 @@ Transform:
   m_GameObject: {fileID: 3671628892093333372}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.032, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -606,6 +606,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1550514412580984892, guid: 83ca5ae9ab7326b48985c1277ec59ace, type: 3}
+--- !u!1 &3834477667162237209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114354426995794556}
+  m_Layer: 0
+  m_Name: foodOutputTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1114354426995794556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834477667162237209}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.324}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1939823851488676505}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3965284803401221288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,12 +1353,16 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   objectRoot: {fileID: 3345410525973049616}
   turnOnAxis: 1
   snapPlayerHandToTransform: 1
   snapTransform: {fileID: 6583676999695578858}
   handRotOffset: {x: 0, y: 0, z: 0, w: 0}
   interactionRange: 5.89
+  forLeftHand: 0
   rotOffset: {x: -90, y: 0, z: 0}
   rotClampMin: {x: -90, y: 0, z: 0}
   rotClampMax: {x: 0, y: 0, z: 0}
@@ -1529,6 +1564,8 @@ GameObject:
   - component: {fileID: 1939823851488676505}
   - component: {fileID: 4253760982880636610}
   - component: {fileID: 6860127898735107143}
+  - component: {fileID: 8846041694541192284}
+  - component: {fileID: 6597998357186394264}
   m_Layer: 0
   m_Name: Cube.012
   m_TagString: Untagged
@@ -1548,7 +1585,8 @@ Transform:
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1114354426995794556}
   m_Father: {fileID: 3345410525973049616}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4253760982880636610
@@ -1601,6 +1639,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8846041694541192284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076119249455029043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c80c8bc8661850f4b91696aeed77f09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  applience: {fileID: 11400000, guid: 994e34be9e7fd1547b0dca69a426fa78, type: 2}
+  foodList: []
+  foodCookedPercentList: []
+  cookSpeed: 8
+  foodOutputPoint: {fileID: 1114354426995794556}
+--- !u!65 &6597998357186394264
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8076119249455029043}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6963441, y: 0.5775057, z: 0.56584954}
+  m_Center: {x: -0.000007629423, y: 0.018797608, z: 0.29361355}
 --- !u!1 &8480581693107884629
 GameObject:
   m_ObjectHideFlags: 0

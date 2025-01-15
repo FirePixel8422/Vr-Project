@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.037637
+      value: 1.348
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.997
+      value: 1.451
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.907
+      value: 2.182
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51,7 +51,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 15a91dee8beec2b4c9bb240ba52c0ae1, type: 2}
+      objectReference: {fileID: 2100000, guid: 05edd128a797d8444a4d3686606ab650, type: 2}
     - target: {fileID: 919132149155446097, guid: 4b6d755071a2ec944817e3e683a2b703, type: 3}
       propertyPath: m_Name
       value: Sliced_Onion
@@ -141,7 +141,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   colliders: []
   debugRBCenterOfMass: 0
-  foodType: {fileID: 11400000, guid: 4627045965b15d145b89aa390bc2f315, type: 2}
+  foodType: {fileID: 11400000, guid: 38b0cbb8bea05e54494d1f5b9f37d575, type: 2}
   requiredRecipe:
     requiredFood: []
     requiredApplience: {fileID: 0}
