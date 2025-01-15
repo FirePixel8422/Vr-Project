@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lava Shader Material 1
+  m_Name: Lava Shader Material 4
   m_Shader: {fileID: -6465566751694194690, guid: ea816debe6082e94db67e255d9f00406, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -45,8 +45,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ButtomPower: 3.9
-    - _FresnalPower: 3.5
+    - _ButtomPower: 0
+    - _FresnalPower: 0
     - _Metalic: 0
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -59,11 +59,11 @@ Material:
     - _VoronoiScale: 2.02
     m_Colors:
     - _BottemRemap: {r: 0, g: 1.1, b: 0, a: 0}
-    - _FresnalColour: {r: 59.81257, g: 9.892671, b: 3.5736954, a: 0}
-    - _LavaColour: {r: 4.7633257, g: 0.9576128, b: 0.10485229, a: 0}
+    - _FresnalColour: {r: 85.28674, g: 13.956187, b: 4.5593476, a: 0}
+    - _LavaColour: {r: 8.330122, g: 1.5187515, b: 0, a: 0}
     - _LavaNormalSpeed: {r: 0, g: 0.01, b: 0, a: 0}
-    - _LavaRemap: {r: -2.75, g: 4, b: 0, a: 0}
-    - _LavaScale: {r: 4, g: 4, b: 0, a: 0}
+    - _LavaRemap: {r: -4, g: 3.98, b: 0, a: 0}
+    - _LavaScale: {r: 0.6, g: 2.5, b: 0, a: 0}
     - _LavaSpeed: {r: 0, g: 0.01, b: 0, a: 0}
     - _SimpleNoiseSpeed: {r: 0.001, g: 0.005, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0, g: 0.005, b: 0, a: 0}
