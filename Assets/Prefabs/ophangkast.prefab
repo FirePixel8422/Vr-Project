@@ -241,6 +241,9 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   objectRoot: {fileID: 7142789606372236512}
   turnOnAxis: 2
   snapPlayerHandToTransform: 1
@@ -376,6 +379,9 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   objectRoot: {fileID: 7142789606372236512}
   turnOnAxis: 2
   snapPlayerHandToTransform: 1
@@ -538,7 +544,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.2625573, y: 2.041, z: 1.8093505}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.95}
+  m_LocalScale: {x: 0.8000003, y: 0.8, z: 0.95000035}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2914001206348028186}

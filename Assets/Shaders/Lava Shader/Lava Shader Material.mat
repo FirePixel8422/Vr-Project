@@ -59,11 +59,11 @@ Material:
     - _VoronoiScale: 5
     m_Colors:
     - _BottemRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _FresnalColour: {r: 0.0007314645, g: 0.00013932526, b: 0.000026807607, a: 0}
+    - _FresnalColour: {r: 1, g: 0.32024333, b: 0.09119487, a: 1}
     - _LavaColour: {r: 5.31951, g: 0.97238356, b: 0, a: 0}
     - _LavaNormalSpeed: {r: 0, g: 0.01, b: 0, a: 0}
     - _LavaRemap: {r: -2.21, g: 3, b: 0, a: 0}
-    - _LavaScale: {r: 3, g: 3, b: 0, a: 0}
+    - _LavaScale: {r: 0.6, g: 2.8, b: 0, a: 0}
     - _LavaSpeed: {r: 0, g: 0.01, b: 0, a: 0}
     - _SimpleNoiseSpeed: {r: 0.001, g: 0.005, b: 0, a: 0}
     - _VoronoiSpeed: {r: 0, g: 0.005, b: 0, a: 0}

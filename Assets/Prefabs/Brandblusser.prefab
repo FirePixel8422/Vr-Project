@@ -279,7 +279,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.80000025, y: 0.8, z: 0.8000005}
+  m_LocalScale: {x: 0.80000067, y: 0.8, z: 0.8000009}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7588174506205237426}
@@ -334,9 +334,10 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
-  pickupRotationMode: 1
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   pickupPosOffset: {x: 0.016, y: 0.139, z: 0}
-  pickupPositionMode: 1
   pickUpRotOffset: {x: 180, y: -90, z: 0}
   throwVelocityMultiplier: 0.4
   velocityClamp: {x: 1.5, y: 1.5, z: 1.5}
