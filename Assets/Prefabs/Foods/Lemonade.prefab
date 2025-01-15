@@ -69,6 +69,9 @@ PrefabInstance:
       addedObject: {fileID: 7582796093128405903}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d762e0797a570714ba0cac00d4d9dd3c, type: 3}
       insertIndex: -1
+      addedObject: {fileID: -91145142499062252}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d762e0797a570714ba0cac00d4d9dd3c, type: 3}
+      insertIndex: -1
       addedObject: {fileID: -5676207681549870673}
   m_SourcePrefab: {fileID: 100100000, guid: d762e0797a570714ba0cac00d4d9dd3c, type: 3}
 --- !u!1 &3164814249880259233 stripped
@@ -103,6 +106,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!64 &-91145142499062252
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3164814249880259233}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7077128002869749420, guid: d762e0797a570714ba0cac00d4d9dd3c, type: 3}
 --- !u!114 &-5676207681549870673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,11 +157,13 @@ MonoBehaviour:
   rb: {fileID: 0}
   colliders: []
   debugRBCenterOfMass: 0
-  foodType: {fileID: 0}
+  foodType: {fileID: 11400000, guid: 7de2b7396918b6048ab8dd1726249fbe, type: 2}
   requiredRecipe:
     requiredFood:
     - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
     - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
     - {fileID: 11400000, guid: cb9acac7f8916d94dab899c0b3b78081, type: 2}
+    - {fileID: 11400000, guid: 01dc9677b83162b42a19e2e62325e03e, type: 2}
+    - {fileID: 11400000, guid: 01dc9677b83162b42a19e2e62325e03e, type: 2}
     requiredApplience: {fileID: 11400000, guid: 3070fd38c4c95a14e83bf58b4fccf315, type: 2}
     foodIndex: 0

@@ -22,8 +22,6 @@ public class CustomerManager : MonoBehaviour
 
     private Customer[] customers;
 
-    [SerializeField] private Food[] foodsForOrder;
-
     [SerializeField] private float minPatience, maxPatience;
 
 
@@ -53,9 +51,9 @@ public class CustomerManager : MonoBehaviour
     [BurstCompile]
     public void SelectNewCustomer()
     {
-        int r = Random.Range(0, foodsForOrder.Length);
+        int r = Random.Range(0, FoodManager.Instance.recipesList.Length);
 
-        FoodType foodToOrder = foodsForOrder[r].foodType.foodType;
+        FoodType foodToOrder = FoodManager.Instance.recipesList[r].foodType.foodType;
         float patience = Random.Range(minPatience, maxPatience);
 
 

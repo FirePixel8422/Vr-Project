@@ -96,7 +96,7 @@ public class Blender : ApplienceObject
         }
 
 
-        totalElapsed = 0;
+        totalElapsed = math.clamp(blendTime - totalElapsed, 0, blendTime);
 
         while (totalElapsed < cooldownTime)
         {
@@ -201,8 +201,6 @@ public class Blender : ApplienceObject
         if (FoodManager.Instance.TryMakeFood(foodTypes, applience.applience, out Food madeFood))
         {
             Instantiate(madeFood.gameObject, foodOutputTransform.position, Quaternion.identity);
-
-            print(madeFood);
         }
     }
 }

@@ -64,8 +64,6 @@ public class Pan : Pickupable, ICustomUpdater
                 burger.connectedHand.isHoldingObject = false;
             }
 
-            burger.interactable = false;
-
             foodList.Add(burger);
         }
     }
@@ -86,8 +84,6 @@ public class Pan : Pickupable, ICustomUpdater
             burger.transform.parent = null;
 
             burger.TogglePhysics(true);
-
-            burger.interactable = true;
 
             foodList.Remove(burger);
         }

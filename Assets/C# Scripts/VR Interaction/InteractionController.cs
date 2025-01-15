@@ -326,7 +326,6 @@ public class InteractionController : MonoBehaviour, ICustomUpdater
                 angularVelocity += savedAngularVelocity[i] / frameAmount;
             }
 
-            print("throw called");
             heldObject.Throw(velocity, angularVelocity);
         }
         else

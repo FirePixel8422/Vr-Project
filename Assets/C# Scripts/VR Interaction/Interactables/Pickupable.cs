@@ -32,7 +32,7 @@ public class Pickupable : Interactable
     [HideInInspector]
     public Rigidbody rb;
 
-    [HideInInspector]
+    //[HideInInspector]
     public Collider[] colliders;
 
 
@@ -136,13 +136,13 @@ public class Pickupable : Interactable
 
     public void TogglePhysics(bool state, bool keepColliders = false)
     {
-        if (keepColliders == false)
-        {
-            foreach (Collider coll in colliders)
-            {
-                coll.enabled = state;
-            }
-        }
+        //if (keepColliders == false)
+        //{
+        //    foreach (Collider coll in colliders)
+        //    {
+        //        coll.enabled = state;
+        //    }
+        //}
 
         rb.constraints = state ? RigidbodyConstraints.None : RigidbodyConstraints.FreezeAll;
     }

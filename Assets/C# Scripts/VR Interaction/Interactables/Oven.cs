@@ -42,6 +42,8 @@ public class Oven : ApplienceObject, ICustomUpdater
                 {
                     foodList.RemoveAt(i);
                     foodCookedPercentList.RemoveAt(i);
+
+                    break;
                 }
             }
         }
@@ -67,6 +69,8 @@ public class Oven : ApplienceObject, ICustomUpdater
 
                 foodList.RemoveAt(i);
                 foodCookedPercentList.RemoveAt(i);
+
+                i -= 1;
             }
         }
     }

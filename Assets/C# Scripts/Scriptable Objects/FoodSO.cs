@@ -17,7 +17,7 @@ public class FoodSO : ScriptableObject
     {
         if (string.IsNullOrEmpty(foodName) == false)
         {
-            foodType.foodNameFixed = foodName;
+            foodType.foodName = foodName;
         }
     }
 
@@ -30,12 +30,12 @@ public class FoodSO : ScriptableObject
 [System.Serializable]
 public struct FoodType : IEquatable<FoodType>
 {
-    public FixedString128Bytes foodNameFixed;
+    public string foodName;
 
 
     public bool Equals(FoodType other)
     {
-        return foodNameFixed == other.foodNameFixed;
+        return foodName == other.foodName;
     }
 
 
@@ -51,7 +51,7 @@ public struct FoodType : IEquatable<FoodType>
 
     public override int GetHashCode()
     {
-        return foodNameFixed.GetHashCode();
+        return foodName.GetHashCode();
     }
 
 

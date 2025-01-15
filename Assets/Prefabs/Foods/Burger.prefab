@@ -2691,7 +2691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectedHand: {fileID: 0}
-  interactable: 0
+  interactable: 1
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0

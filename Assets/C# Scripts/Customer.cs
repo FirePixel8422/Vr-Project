@@ -10,6 +10,8 @@ public class Customer : MonoBehaviour, ICustomUpdater
     [SerializeField] private float3[] orderWayPoints;
     [SerializeField] private int wayPointIndex;
 
+    [SerializeField] private LayerMask rayLayers;
+
     [SerializeField] private float moveSpeed;
 
     [SerializeField] private float rotSpeed;
@@ -31,6 +33,8 @@ public class Customer : MonoBehaviour, ICustomUpdater
     [SerializeField] private bool ordering = false;
     [SerializeField] private bool roaming = true;
 
+    private Collider coll;
+
 
 
 
@@ -44,6 +48,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
         nextRoamPoint = new Vector3(centerRoamPoint.x + Random.Range(-maxRoamDist, maxRoamDist), 0, centerRoamPoint.z + Random.Range(-maxRoamDist, maxRoamDist));
 
         anim = GetComponent<Animator>();
+        coll = GetComponent<Collider>();
     }
 
 
@@ -54,6 +59,8 @@ public class Customer : MonoBehaviour, ICustomUpdater
         requestedFoodType = _requestedFoodType;
         
         patience = maxPatience;
+
+        print(requestedFoodType.foodName);
 
 
         StopAllCoroutines();
@@ -79,6 +86,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
                     anim.SetBool("Walking", false);
 
                     ordering = false;
+                    coll.enabled = true;
 
                     StartCoroutine(WaitForFoodTimer(patience));
                 }
@@ -138,7 +146,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
 
 
         //keep feet on ground with ray
-        if (Physics.Raycast(transform.position + Vector3.up * 3, Vector3.down, out RaycastHit hit))
+        if (Physics.Raycast(transform.position + Vector3.up * 3, Vector3.down, out RaycastHit hit, 10, rayLayers))
         {
             transform.position = new Vector3(newPlayerXYPos.x, hit.point.y, newPlayerXYPos.z);
         }
@@ -161,6 +169,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
         yield return new WaitForSeconds(patience);
 
         roaming = true;
+        coll.enabled = false;
 
         CustomerManager.Instance.SelectNewCustomer();
     }
@@ -181,11 +190,16 @@ public class Customer : MonoBehaviour, ICustomUpdater
     [BurstCompile]
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Food food) && food.foodType.foodType == requestedFoodType)
+        if (other.transform.TryGetComponent(out Food food) && food.foodType.foodType == requestedFoodType)
         {
             Destroy(food.gameObject);
 
-            print("mission Complete");
+            roaming = true;
+            coll.enabled = false;
+
+            CustomerManager.Instance.SelectNewCustomer();
+
+            StopAllCoroutines();
         }
     }
 

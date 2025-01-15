@@ -8,19 +8,19 @@ public class Tester : MonoBehaviour
     public ApplienceSO applience;
     public FoodSO[] foods;
 
-    public NativeList<FoodType> foodTypes;
+    public List<FoodType> foodTypes;
 
 
     private void Start()
     {
-        foodTypes = new NativeList<FoodType>(100, Allocator.Persistent);
+        foodTypes = new List<FoodType>();
 
         AddFoods();
     }
 
     private void OnValidate()
     {
-        if (foodTypes.IsCreated)
+        if (foodTypes != null)
         {
             foodTypes.Clear();
 
@@ -44,7 +44,7 @@ public class Tester : MonoBehaviour
         if (trigger)
         {
             trigger = false;
-            print("Try Make Food State: " + FoodManager.Instance.TryMakeFood(foodTypes.AsArray().ToArray(), applience.applience, out Food madeFood) + ", Made: " + madeFood.foodType.foodName);
+            print("Try Make Food State: " + FoodManager.Instance.TryMakeFood(foodTypes.ToArray(), applience.applience, out Food madeFood) + ", Made: " + madeFood.foodType.foodName);
         }
     }
 }
