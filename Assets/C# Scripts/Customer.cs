@@ -26,6 +26,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
     [SerializeField] private float maxRoamDist;
 
     [SerializeField] private FoodType requestedFoodType;
+    [SerializeField] private SpriteRenderer foodRenderer;
 
 
     private Animator anim;
@@ -53,7 +54,7 @@ public class Customer : MonoBehaviour, ICustomUpdater
 
 
     [BurstCompile]
-    public void SetOrder(int _wayPointIndex, FoodType _requestedFoodType, float maxPatience)
+    public void SetOrder(int _wayPointIndex, FoodType _requestedFoodType, float maxPatience, Sprite sprite)
     {
         wayPointIndex = _wayPointIndex;
         requestedFoodType = _requestedFoodType;
@@ -67,6 +68,9 @@ public class Customer : MonoBehaviour, ICustomUpdater
         roaming = false;
 
         ordering = true;
+
+        foodRenderer.transform.parent.gameObject.SetActive(true);
+        foodRenderer.sprite = sprite;
     }
 
 
@@ -171,7 +175,8 @@ public class Customer : MonoBehaviour, ICustomUpdater
         roaming = true;
         coll.enabled = false;
 
-        CustomerManager.Instance.SelectNewCustomer();
+        foodRenderer.transform.parent.gameObject.SetActive(false);
+        CustomerManager.Instance.SelectNewCustomer(false);
     }
 
 
@@ -197,7 +202,8 @@ public class Customer : MonoBehaviour, ICustomUpdater
             roaming = true;
             coll.enabled = false;
 
-            CustomerManager.Instance.SelectNewCustomer();
+            foodRenderer.transform.parent.gameObject.SetActive(false);
+            CustomerManager.Instance.SelectNewCustomer(true);
 
             StopAllCoroutines();
         }

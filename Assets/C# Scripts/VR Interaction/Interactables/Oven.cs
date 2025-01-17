@@ -62,7 +62,7 @@ public class Oven : ApplienceObject, ICustomUpdater
             {
                 if (FoodManager.Instance.TryMakeFood(new FoodType[1] { foodList[i].foodType.foodType }, applience.applience, out Food madeFood))
                 {
-                    Instantiate(madeFood.gameObject, foodOutputPoint.position, Quaternion.identity);
+                    Instantiate(madeFood.gameObject, foodList[i].transform.position + Vector3.up * 0.01f, foodList[i].transform.rotation);
                 }
 
                 Destroy(foodList[i].gameObject);

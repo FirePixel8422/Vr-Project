@@ -18,6 +18,7 @@ public class FoodManager : MonoBehaviour
 
 
     public Food[] recipesList;
+    public Sprite[] recipeSprites;
 
 
 

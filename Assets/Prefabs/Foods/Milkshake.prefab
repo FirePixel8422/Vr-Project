@@ -111,10 +111,13 @@ MonoBehaviour:
   isThrowable: 1
   heldByPlayer: 0
   objectSize: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
   pickupPosOffset: {x: 0, y: 0, z: 0}
   pickUpRotOffset: {x: 0, y: 0, z: 0}
   throwVelocityMultiplier: 1
-  velocityClamp: {x: 3, y: 3, z: 3}
+  velocityClamp: {x: 7, y: 7, z: 7}
   minRequiredVelocityXYZ: 0.065
   weight: 1
   rb: {fileID: 0}
@@ -123,7 +126,7 @@ MonoBehaviour:
   foodType: {fileID: 11400000, guid: eeb6ce6205a7eb047a3e0ac3182f3588, type: 2}
   requiredRecipe:
     requiredFood:
-    - {fileID: 11400000, guid: 8ab74490b4d62b2489b187068532c710, type: 2}
+    - {fileID: 11400000, guid: f30d43eb74c3fe94aa549cc04d22bb8e, type: 2}
     - {fileID: 11400000, guid: 28cd8b4e6c1e98049bb862ef80ccebbf, type: 2}
     - {fileID: 11400000, guid: 01dc9677b83162b42a19e2e62325e03e, type: 2}
     requiredApplience: {fileID: 11400000, guid: 3070fd38c4c95a14e83bf58b4fccf315, type: 2}
