@@ -43,7 +43,7 @@ public class ShatterController : FragmentController
     {
         if (collision.transform.TryGetComponent(out Pickupable pickupable))
         {
-            float3 vel = collision.rigidbody.velocity;
+            float3 vel = collision.rigidbody.linearVelocity;
 
             float calcVel = (math.abs(vel.x) + math.abs(vel.y) + math.abs(vel.z)) * pickupable.weight;
 

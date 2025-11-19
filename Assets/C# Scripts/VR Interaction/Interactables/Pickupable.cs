@@ -116,7 +116,7 @@ public class Pickupable : Interactable
             // Calculate the linear velocity caused by angular velocity
             Vector3 tangentialVelocity = Vector3.Cross(angularVelocity, radius);
 
-            rb.velocity = VectorLogic.ClampDirection(targetVelocity + tangentialVelocity, velocityClamp);
+            rb.linearVelocity = VectorLogic.ClampDirection(targetVelocity + tangentialVelocity, velocityClamp);
         }
     }
 
